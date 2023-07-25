@@ -7,13 +7,12 @@
   - [Buscar link](#buscar-link)
   - [Ativar/Desativar link](#ativar-desativar-link)
 - [Categorias](#categorias)
+  - [Criar categoria](#criar-categoria)
   - [Buscar categorias](#buscar-categorias)
   - [Ativar/Desativar categoria](#ativar-desativar-categoria)
 
-
 ## Links
-&nbsp;
-### Criar link
+### > Criar link
 *Cria uma nova url encurtada*
 #### Request
 ```js
@@ -22,6 +21,7 @@ POST /urls
 ```json
 {
     "url": "string: url original",
+    "nome": "string: nome para url",
     "descricao": "string: descrição do link para controle",
     "dataExpiracao": "date: data de expiracao para url",
     "acessoMaximo": "int: quantidade total de acessos",
@@ -44,7 +44,7 @@ POST /urls
 "https://localhost:5000/url-encurtada"
 ```
 #
-### Buscar links
+### > Buscar links
 *Buscar todos os links existentes*
 #### Request
 ```js
@@ -83,7 +83,7 @@ GET /urls?categoria={categ}
 404 Not Found
 ```
 #
-### Buscar link
+### > Buscar link
 *Busca um único link pelo seu ID*
 #### Request
 ```js
@@ -104,7 +104,7 @@ GET /urls/{id}
 404 NotFound
 ```
 #
-### Ativar Desativar link
+### > Ativar Desativar link
 *Ativar ou desativar link (depende do status atual)*
 #### Request
 ```js
@@ -116,9 +116,27 @@ UPDATE /urls/{id}/ativar-desativar
 ```
 #
 ## Categorias
-&nbsp;
 
-### Buscar categorias
+### > Criar categoria
+*Criar categoria*
+#### Request
+```js
+POST /categorias
+```
+```json
+{
+    "nome": "string: nome da categoria",
+    "descricao": "string: descrição do link para controle",
+    "dataExpiracao": "date: data de expiracao para url",
+    "acessoMaximo": "int: quantidade total de acessos"
+}
+```
+#### Response
+```js
+201 Created
+```
+#
+### > Buscar categorias
 *Buscar categorias existentes*
 #### Request
 ```js
@@ -141,13 +159,22 @@ GET /categorias?nome={nome}&ativas={bool}
 }
 ```
 #
-### Ativar Desativar categoria
+### > Ativar Desativar categoria
 *Ativar ou desativar categoria (depende do status atual)*
 #### Request
 ```js
 UPDATE /categorias/{id}
 ```
+```json
+{
+    "nome": "string: nome da categoria",
+    "descricao": "string: descrição do link para controle",
+    "dataExpiracao": "date: data de expiracao para url",
+    "acessoMaximo": "int: quantidade total de acessos"
+}
+```
 #### Response
 ```js
 200 Ok
 ```
+
