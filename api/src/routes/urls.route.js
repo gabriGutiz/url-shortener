@@ -10,7 +10,7 @@ router.post('', async (req, res, next) => {
         return res.statusCode(400).send(error.details);
     }
 
-    await new UrlService().criarUrl(value, req.baseUrl)
+    await new UrlService().criarUrl(value, req.get('host'))
         .then((url) => {
             return res.status(201).send(url);
         })

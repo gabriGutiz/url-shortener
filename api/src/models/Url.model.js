@@ -30,13 +30,17 @@ const UrlSchema = new mongoose.Schema({
     dataCriacao: {
         type: Date,
         default: Date.now
-    }//,
-    //categorias: [{
-    //    id: {
-    //        type: mongoose.Schema.Types.ObjectId,
-    //        ref:'Categoria'
-    //    }
-    //}]
+    },
+    ativo: {
+        type: Boolean,
+        default: true
+    }/*,
+    categorias: [{
+        id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref:'Categoria'
+        }
+    }]*/
 })
 
 const Url = mongoose.model('Url', UrlSchema);

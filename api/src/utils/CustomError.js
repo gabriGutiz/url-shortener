@@ -1,10 +1,10 @@
 
 class CustomError {
-    constructor(statusCode, mensagem) {
-        this.statusCode = statusCode || 500;
+    constructor(statusCode=500, mensagem='Internal Server Error') {
+        this.statusCode = statusCode;
         this.body = {
-            code: statusCode || 500,
-            message: mensagem || 'Internal Server Error'
+            code: statusCode,
+            message: mensagem 
         };
     }
 }
