@@ -1,5 +1,5 @@
 import { DbService } from "./db.service.js";
-import { verificaUrlAtivo } from "../utils/url.util.js";
+import { urlEstaAtivo } from "../utils/url.util.js";
 import { CustomError } from "../utils/CustomError.js";
 
 class IndexService {
@@ -9,7 +9,7 @@ class IndexService {
 
     async buscarUrlPorId(id) {
         const url = await this._dbService.buscarRegistroPorUrlId(id);
-        if (!verificaUrlAtivo(url)) {
+        if (!urlEstaAtivo(url)) {
             throw new CustomError(404, "Url não encontrada");
         }
         await this._dbService.updateClicks(id);

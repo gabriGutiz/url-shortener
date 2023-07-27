@@ -6,16 +6,18 @@ class DbService {
         mongoConnection();
     }
 
+    async buscarTodasUrls() {
+        return await Url.find().exec();
+    }
+
     async buscarRegistroPorUrlId(urlId) {
-        let urlEncontrado = await Url.findOne({ urlId: urlId }).exec();
-        console.log(urlEncontrado); // TODO: remover console.log
+        const urlEncontrado = await Url.findOne({ urlId: urlId }).exec();
         return urlEncontrado;
     }
 
-    async buscarRegistroPorUrl(urlOriginal) {
-        let urlEncontrado = await Url.findOne({ urlOriginal: urlOriginal }).exec();
-        console.log(urlEncontrado); // TODO: remover console.log
-        return urlEncontrado;
+    async buscarRegistrosPorUrl(urlOriginal) {
+        const urlsEncontrados = await Url.find({ urlOriginal: urlOriginal }).exec();
+        return urlsEncontrados;
     }
 
     async criarRegistro(registroUrl) {

@@ -3,10 +3,12 @@ function urlCompleto(baseUrl, key) {
     return `${baseUrl}/${key}`;
 }
 
-function verificaUrlAtivo(url) {
-    return (url?.clicks >= url?.acessoMaximo ||
-        url?.dataExpiracao <= new Date() ||
-        url?.ativo);
+function urlEstaAtivo(url) {
+    if (url?.clicks >= url?.acessoMaximo ||
+        url?.dataExpiracao <= new Date()) {
+        return false;
+    }
+    return (url?.ativo);
 }
 
-export { urlCompleto, verificaUrlAtivo };
+export { urlCompleto, urlEstaAtivo };
