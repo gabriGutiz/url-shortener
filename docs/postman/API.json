@@ -1,0 +1,91 @@
+{
+	"info": {
+		"_postman_id": "19e0cc2e-4dd7-49b7-8a62-01544dd54302",
+		"name": "API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27150601"
+	},
+	"item": [
+		{
+			"name": "Index",
+			"item": [
+				{
+					"name": "Redirect to url",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/github-teste",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"github-teste"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Url",
+			"item": [
+				{
+					"name": "Create url",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"url\": \"https://github.com/gabriGutiz\",\n    \"urlId\": \"github-teste7\",\n    \"descricao\": \"Link Github pessoal\",\n    \"dataExpiracao\": \"2023-10-10\",\n    \"acessoMaximo\": 1500\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/urls",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"urls"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get urls",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/urls?ativo=true",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"urls"
+							],
+							"query": [
+								{
+									"key": "url",
+									"value": "https://github.com/gabriGutiz",
+									"disabled": true
+								},
+								{
+									"key": "ativo",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
