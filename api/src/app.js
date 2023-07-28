@@ -1,5 +1,5 @@
 import express from 'express';
-import { configEnv } from './config/enviroment.config.js';
+import { configEnv } from './config/env.config.js';
 import { CustomError } from './utils/CustomError.js';
 
 const app = express();
@@ -19,7 +19,6 @@ app.use((error, req, res, next) => {
     return res.status(500).send({ message: error.message });
 });
 
-const PORT = configEnv.PORT || 3003;
-app.listen(PORT, () => {
-    console.log(`Server rodando na porta ${PORT}`);
+app.listen(configEnv.PORT, configEnv.HOST, () => {
+    console.log(`Server rodando em http://${configEnv.HOST}:${configEnv.PORT}`);
 });
