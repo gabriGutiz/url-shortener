@@ -5,11 +5,11 @@ import { retornoNotFound } from '../utils/notFound.util.js';
 
 const router = express.Router();
 
-router.get('/:id', async (req, res, next) => {
-    if (!req.params?.id) {
-        next(new CustomError(400, 'É necessário fornecer a chave do link'));
-    }
+router.get('', async (req, res) => {
+    res.send('health');
+})
 
+router.get('/:id', async (req, res, next) => {
     await new IndexService().buscarUrlPorId(req.params.id)
         .then((url) => {
             return res.redirect(308, url);

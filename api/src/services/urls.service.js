@@ -1,5 +1,5 @@
 import { CustomError } from '../utils/CustomError.js';
-import { urlCompleto, urlEstaAtivo } from '../utils/url.util.js';
+import { urlCompleto, urlEstaAtivo, motivosUrlInativo } from '../utils/url.util.js';
 import { DbService } from './db.service.js';
 
 class UrlService {
@@ -34,6 +34,29 @@ class UrlService {
             return await this._criarNovaUrl(urlRequest, baseUrl);
         }
         throw new CustomError(400, `Já existe uma url registrada para o nome ${urlRequest.urlId}`);
+    }
+
+    async buscarStatus(idUrl) {
+        const url = await this._buscarUrl(idUrl);
+        const motivos = motivosUrlInativo(url);
+        return {
+            status: motivos.length === 0 ? 'ativo' : 'inativo',
+            motivos: motivos
+        };
+    }
+
+    async ativarDesativarUrl(idUrl) {
+        const url = await this._buscarUrl(idUrl);
+        url.ativo = !url.ativo;
+        await this._dbService.alterarRegistro(url);
+    }
+
+    async _buscarUrl(idUrl) {
+        if (!idUrl) throw new CustomError(400, 'É necessário passar o id da url');
+
+        const url = await this._dbService.buscarRegistroPorUrlId(idUrl);
+        if (!url) throw new CustomError(404, `Não foi encontrado nenhum registro para o id ${idUrl}`);
+        return url;
     }
 
     _filtrarAtivos(filtros, arrayUrls) {

@@ -11,13 +11,11 @@ class DbService {
     }
 
     async buscarRegistroPorUrlId(urlId) {
-        const urlEncontrado = await Url.findOne({ urlId: urlId }).exec();
-        return urlEncontrado;
+        return await Url.findOne({ urlId: urlId }).exec();
     }
 
     async buscarRegistrosPorUrl(urlOriginal) {
-        const urlsEncontrados = await Url.find({ urlOriginal: urlOriginal }).exec();
-        return urlsEncontrados;
+        return await Url.find({ urlOriginal: urlOriginal }).exec();
     }
 
     async criarRegistro(registroUrl) {
@@ -32,6 +30,10 @@ class DbService {
         novoUrl.save();
 
         return novoUrl;
+    }
+
+    async alterarRegistro(urlAlterado) {
+        await Url.updateOne({ _id: urlAlterado._id }, urlAlterado).exec();
     }
 
     async updateClicks(urlId) {

@@ -11,4 +11,15 @@ function urlEstaAtivo(url) {
     return (url?.ativo);
 }
 
-export { urlCompleto, urlEstaAtivo };
+function motivosUrlInativo(url) {
+    const motivos = [];
+    if (!url?.ativo) motivos.push('Desativação manual');
+
+    if (url?.clicks >= url?.acessoMaximo) motivos.push('A quantidade de acessos máxima foi excedida');
+
+    if (url?.dataExpiracao <= new Date()) motivos.push('A data de expiração foi ultrapassada');
+
+    return motivos;
+}
+
+export { urlCompleto, urlEstaAtivo, motivosUrlInativo };

@@ -126,7 +126,7 @@ const retornoNotFound = `
 		<div class="notfound">
 			<div class="notfound-404">
 				<h1>Oops!</h1>
-				<h2>404 - The Page can't be found</h2>
+				<h2>404 - Página não encontrada</h2>
 			</div>
 		</div>
 	</div>

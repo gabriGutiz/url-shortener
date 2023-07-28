@@ -19,6 +19,6 @@ app.use((error, req, res, next) => {
     return res.status(500).send({ message: error.message });
 });
 
-app.listen(configEnv.PORT, configEnv.HOST, () => {
-    console.log(`Server rodando em http://${configEnv.HOST}:${configEnv.PORT}`);
+app.listen(configEnv.PORT, () => {
+    console.log(`Server rodando na porta ${configEnv.PORT}`);
 });
