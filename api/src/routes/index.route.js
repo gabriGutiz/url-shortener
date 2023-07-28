@@ -10,6 +10,7 @@ router.get('', async (req, res) => {
 })
 
 router.get('/:id', async (req, res, next) => {
+    if (!req.params.id) throw new CustomError(400, 'É necessário fornecer um url id');
     await new IndexService().buscarUrlPorId(req.params.id)
         .then((url) => {
             return res.redirect(308, url);
