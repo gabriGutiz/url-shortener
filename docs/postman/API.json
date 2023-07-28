@@ -1,9 +1,8 @@
 {
 	"info": {
-		"_postman_id": "19e0cc2e-4dd7-49b7-8a62-01544dd54302",
+		"_postman_id": "9b647b1a-f8df-47a5-9e75-c2bea4de7e34",
 		"name": "API",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "27150601"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -15,12 +14,26 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BaseUrl}}/github-teste",
+							"raw": "{{BaseUrl}}/{{urlKey}}",
 							"host": [
 								"{{BaseUrl}}"
 							],
 							"path": [
-								"github-teste"
+								"{{urlKey}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Health check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}",
+							"host": [
+								"{{BaseUrl}}"
 							]
 						}
 					},
@@ -38,7 +51,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"url\": \"https://github.com/gabriGutiz\",\n    \"urlId\": \"github-teste7\",\n    \"descricao\": \"Link Github pessoal\",\n    \"dataExpiracao\": \"2023-10-10\",\n    \"acessoMaximo\": 1500\n}",
+							"raw": "{\n    \"url\": \"{{url}}\",\n    \"urlId\": \"{{urlKey}}\",\n    \"dataExpiracao\": \"2023-07-28T18:00:00.000Z\",\n    \"acessoMaximo\": 10\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -63,7 +76,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BaseUrl}}/urls?ativo=true",
+							"raw": "{{BaseUrl}}/urls",
 							"host": [
 								"{{BaseUrl}}"
 							],
@@ -78,14 +91,85 @@
 								},
 								{
 									"key": "ativo",
-									"value": "true"
+									"value": "true",
+									"disabled": true
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get status url",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/urls/{{urlKey}}/status",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"urls",
+								"{{urlKey}}",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ativar/Desativar url",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/urls/{{urlKey}}/ativar-desativar",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"urls",
+								"{{urlKey}}",
+								"ativar-desativar"
 							]
 						}
 					},
 					"response": []
 				}
 			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "urlKey",
+			"value": "linkedin-gabriel",
+			"type": "default"
+		},
+		{
+			"key": "url",
+			"value": "https://www.linkedin.com/in/gchinelli/",
+			"type": "default"
 		}
 	]
 }
