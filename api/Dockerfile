@@ -1,9 +1,11 @@
 FROM node:18
 ARG EKS_ENV
+ARG MONGO_CONN
+ARG PORT
 
-ENV NODE_ENV prd
-ENV MONGO_CONN mongodb+srv://api:yITw27S3eT67XlZf@urlshort.2wreelj.mongodb.net/?retryWrites=true&w=majority
-ENV PORT 8000
+ENV NODE_ENV $EKS_ENV
+ENV MONGO_CONN $MONGO_CONN
+ENV PORT $PORT
 
 WORKDIR /usr/src/app
 COPY package*.json ./
