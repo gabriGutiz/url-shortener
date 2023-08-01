@@ -7,8 +7,8 @@ class UsersService {
     }
 
     async buscarUsuarios(filtros) {
-        const urls = await this._dbService.buscarUsers(filtros);
-        return urls;
+        let users = await this._dbService.buscarUsers(filtros);
+        return users;
     }
 
     async criarUsuario(request) {

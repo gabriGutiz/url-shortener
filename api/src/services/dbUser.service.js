@@ -42,8 +42,8 @@ class DbUserService {
     }
 
     async validarLogin(request) {
-        const user = await User.findOne({ user: request.user }).exec();
-        return (user?.ativo && user?.senha === request.senha);
+        const user = await User.findOne({ user: request.user, senha: request.senha}).exec();
+        return (user?.ativo);
     }
 }
 
