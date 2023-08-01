@@ -1,6 +1,10 @@
 import mongoose from "mongoose";
 
 const UserSchema = new mongoose.Schema({
+    _id: {
+        type: String,
+        select: false
+    },
     user: {
         type: String,
         required: true,
@@ -9,7 +13,8 @@ const UserSchema = new mongoose.Schema({
     },
     senha: {
         type: String,
-        required: false
+        required: false,
+        select: false
     },
     dataCriacao: {
         type: Date,
@@ -18,6 +23,10 @@ const UserSchema = new mongoose.Schema({
     ativo: {
         type: Boolean,
         default: true
+    },
+    __v: {
+        type: Number,
+        select: false
     }
 });
 

@@ -219,7 +219,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"senha\": \"{{senha}}\",\n    \"ativo\": false\n}",
+							"raw": "{\n    \"user\": \"{{user}}\",\n    \"senha\": \"{{senha}}\",\n    \"ativo\": true\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -242,11 +242,8 @@
 				},
 				{
 					"name": "Login",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
