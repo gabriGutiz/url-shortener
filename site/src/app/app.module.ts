@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +21,10 @@ import { SemRegistroComponent } from './components/sem-registro/sem-registro.com
 import { LoadingService } from './services/loading.service';
 import { UrlsControlService } from './services/urls-control/urlsControl.service';
 import { SnackBarService } from './services/snackBar.service';
+import { ContaService } from './services/conta.service';
+import { AuthGuard } from './services/auth.guard';
+import { LoginComponent } from './views/login/login.component';
+import { UserControlService } from './services/users-control/userControl.service';
 
 @NgModule({
   declarations: [
@@ -29,10 +34,13 @@ import { SnackBarService } from './services/snackBar.service';
     UserControlComponent,
     NavbarComponent,
     SemRegistroComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatToolbarModule,
     MatIconModule,
     BrowserAnimationsModule,
@@ -46,7 +54,10 @@ import { SnackBarService } from './services/snackBar.service';
   providers: [
     LoadingService,
     UrlsControlService,
-    SnackBarService
+    UserControlService,
+    SnackBarService,
+    AuthGuard,
+    ContaService
   ],
   bootstrap: [AppComponent]
 })
