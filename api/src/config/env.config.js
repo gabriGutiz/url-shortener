@@ -1,6 +1,6 @@
 import { config } from 'dotenv';
 
-config({ path: `./enviroments/.${(process.env.NODE_ENV || 'dev').toLocaleLowerCase()}.env` });
+config({ path: `./environments/.${(process.env.NODE_ENV || 'dev').toLocaleLowerCase()}.env` });
 
 const configEnv = {
     env: process.env,

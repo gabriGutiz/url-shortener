@@ -5,7 +5,7 @@ import { CriarUrlRequest } from "src/app/models/urlsControl/criarUrlRequest.mode
 import { FiltroUrlsRequest } from "src/app/models/urlsControl/filtroUrlsRequest.model";
 import { StatusResponse } from "src/app/models/urlsControl/urlStatusResponse.model";
 import { UrlsResponse } from "src/app/models/urlsControl/urlsReponse.model";
-import { environment } from "src/enviroments/environment";
+import { environment } from "src/environments/environment";
 
 @Injectable()
 export class UrlsControlService {
