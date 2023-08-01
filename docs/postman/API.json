@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "9b647b1a-f8df-47a5-9e75-c2bea4de7e34",
+		"_postman_id": "d8b6b1a7-be13-4135-af0e-f24588c8be1f",
 		"name": "API",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27150601"
 	},
 	"item": [
 		{
@@ -14,11 +15,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BaseUrl}}/{{urlKey}}",
+							"raw": "{{BaseUrl}}/api/{{urlKey}}",
 							"host": [
 								"{{BaseUrl}}"
 							],
 							"path": [
+								"api",
 								"{{urlKey}}"
 							]
 						}
@@ -31,9 +33,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BaseUrl}}",
+							"raw": "{{BaseUrl}}/api",
 							"host": [
 								"{{BaseUrl}}"
+							],
+							"path": [
+								"api"
 							]
 						}
 					},
@@ -51,7 +56,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"url\": \"{{url}}\",\n    \"urlId\": \"{{urlKey}}\",\n    \"dataExpiracao\": \"2023-07-28T18:00:00.000Z\",\n    \"acessoMaximo\": 10\n}",
+							"raw": "{\n    \"url\": \"{{url}}\",\n    \"urlId\": \"{{urlKey}}\",\n    //\"dataExpiracao\": \"2023-07-31T18:00:00.000Z\",\n    \"acessoMaximo\": 10\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -59,11 +64,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{BaseUrl}}/urls",
+							"raw": "{{BaseUrl}}/api/urls",
 							"host": [
 								"{{BaseUrl}}"
 							],
 							"path": [
+								"api",
 								"urls"
 							]
 						}
@@ -76,11 +82,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BaseUrl}}/urls",
+							"raw": "{{BaseUrl}}/api/urls?ativo=true",
 							"host": [
 								"{{BaseUrl}}"
 							],
 							"path": [
+								"api",
 								"urls"
 							],
 							"query": [
@@ -91,8 +98,7 @@
 								},
 								{
 									"key": "ativo",
-									"value": "true",
-									"disabled": true
+									"value": "true"
 								}
 							]
 						}
@@ -105,11 +111,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BaseUrl}}/urls/{{urlKey}}/status",
+							"raw": "{{BaseUrl}}/api/urls/{{urlKey}}/status",
 							"host": [
 								"{{BaseUrl}}"
 							],
 							"path": [
+								"api",
 								"urls",
 								"{{urlKey}}",
 								"status"
@@ -124,11 +131,12 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "{{BaseUrl}}/urls/{{urlKey}}/ativar-desativar",
+							"raw": "{{BaseUrl}}/api/urls/{{urlKey}}/ativar-desativar",
 							"host": [
 								"{{BaseUrl}}"
 							],
 							"path": [
+								"api",
 								"urls",
 								"{{urlKey}}",
 								"ativar-desativar"
@@ -163,12 +171,12 @@
 	"variable": [
 		{
 			"key": "urlKey",
-			"value": "linkedin-gabriel",
+			"value": "instagram-gabriel",
 			"type": "default"
 		},
 		{
 			"key": "url",
-			"value": "https://www.linkedin.com/in/gchinelli/",
+			"value": "https://www.instagram.com/gchinel/",
 			"type": "default"
 		}
 	]

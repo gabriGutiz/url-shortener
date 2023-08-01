@@ -4,7 +4,7 @@
 	"values": [
 		{
 			"key": "BaseUrl",
-			"value": "http://localhost:8000",
+			"value": "http://localhost:3003",
 			"type": "default",
 			"enabled": true
 		}
