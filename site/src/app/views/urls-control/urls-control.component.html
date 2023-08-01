@@ -1,0 +1,17 @@
+<mat-card-title>Controle de urls ativas</mat-card-title>
+
+<app-sem-registro [exibir]="!_existemUrls()"></app-sem-registro>
+<div class="m-t-1" *ngIf="_existemUrls()">
+  <table mat-table [dataSource]="urls" multiTemplateDataRows class="mat-elevation-z8">
+    <ng-container matColumnDef="{{coluna}}" *ngFor="let coluna of colunas">
+      <th mat-header-cell *matHeaderCellDef> {{coluna}} </th>
+      <td mat-cell *matCellDef="let element"> {{element[coluna]}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="elementoExpandido">
+      <td mat-cell *matCellDef="let elemento" [attr.colspan]="colunas">
+        
+      </td>
+    </ng-container>
+  </table>
+</div>

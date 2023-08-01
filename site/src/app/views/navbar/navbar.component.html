@@ -1,0 +1,102 @@
+<nav class="navbar navbar-light">
+  <div class="container">
+    <div>
+      <img class="container-element brand-photo" src="../../../assets/url-photo.png" />
+      <a class="navbar-brand" routerLink="/">Chinelli</a>
+    </div>
+
+    <ul class="nav navbar-nav pull-xs-right">
+      <li class="nav-item nav-li">
+        <div class="list-item"
+          type="button"
+          [ngbPopover]="popContent"
+          placement="bottom"
+          triggers="mouseenter:mouseleave">Admin
+          <mat-icon>keyboard_arrow_down</mat-icon>
+        </div>
+        <ng-template #popContent>
+          <a class="link-text" routerLink="/urls">
+            <mat-icon>http</mat-icon>
+            Controle de URLs
+          </a>
+          <a class="link-text" routerLink="">
+            <mat-icon></mat-icon>
+          </a>
+        </ng-template>
+      </li>
+
+      <li class="nav-item nav-li">
+        <div class="list-item"
+        type="button"
+        [ngbPopover]="popContentUser"
+        placement="bottom"
+        triggers="mouseenter:mouseleave">Usuários
+        <mat-icon>keyboard_arrow_down</mat-icon>
+      </div>
+      <ng-template #popContentUser>
+        <div class="selection-box">
+          <a class="link-text" routerLink="/usuarios">
+            <mat-icon class="icon">accessibility_new</mat-icon>
+            Controle de Usuários
+          </a>
+        </div>
+      </ng-template>
+    </li>
+
+    <li class="nav-item nav-li">
+      <a type="button">
+        Sair
+      </a>
+    </li>
+
+  </ul>
+</div>
+</nav>
+<!--
+<nav class="navbar navbar-expand-lg navbar-light">
+  <a class="container" routerLink="/">
+    <img class="container-element brand-photo" src="../../../assets/url-photo.png" />
+    <p class="container-element brand-name">Chinelli</p>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" routerLink="/">Home <span class="sr-only">(current)</span></a>
+    </div>
+  </div>
+</nav><nav></nav>
+
+<header id="header">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item activate">
+          <button class="navbar-toggler"
+            type="button"
+            [ngbPopover]="popContent"
+            placement="bottom"
+            triggers="mouseenter:mouseleave">Admin
+            <mat-icon class="icon">keyboard_arrow_down</mat-icon>
+          </button>
+          <ng-template #popContent>
+            <div class="selection-box">
+              <a class="header-font" routerLink="/urls">
+                <mat-icon class="icon">http</mat-icon>
+                Controle de URLs
+              </a>
+            </div>
+          </ng-template>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="header-content">
+    <a routerLink="/">
+      <img class="brand-photo" src="../../../assets/url-photo.png" />
+      <p class="brand-name">Chinelli</p>
+    </a>
+  </div>
+</header>
+-->

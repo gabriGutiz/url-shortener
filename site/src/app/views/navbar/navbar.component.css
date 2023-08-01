@@ -1,0 +1,99 @@
+
+nav {
+  background-color: #222;
+}
+
+.brand-photo {
+  height: auto;
+  width: 55px;
+}
+
+.navbar-brand {
+  font-family: 'Space Mono';
+  font-size: 23px;
+  color: #9d9d9d;
+  text-decoration: none;
+}
+
+.nav-li {
+  font-family: 'Space Grotesk';
+  color: #9d9d9d;
+  font-size: large;
+  text-decoration: none;
+  display: inline;
+}
+
+.link-text {
+  text-decoration: none;
+  color: #9d9d9d;
+  font-size: large;
+}
+/*
+nav {
+  background-color: #222;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.container-element {
+  float: left;
+  margin-left: 10px;
+}
+
+.brand-photo {
+  height: auto;
+  width: 55px;
+}
+
+.brand-name {
+  font-family: 'Space Mono';
+  font-size: 23px;
+  color: #bab4b4;
+  text-decoration: none;
+}
+
+.brand-photo {
+  height: auto;
+  width: 55px;
+}
+
+.brand-name {
+  font-family: 'Space Mono';
+  font-size: 23px;
+  color: #bab4b4;
+  text-decoration: none;
+}
+
+#header {
+  background-color: #222;
+}
+
+.header-content {
+  margin: auto;
+  max-width: 65%;
+}
+
+.selection-box {
+  background-color: #222;
+}
+
+.header-font {
+  font-family: 'Space Grotesk';
+  color: #9d9d9d;
+  font-size: large;
+  text-decoration: none;
+}
+
+.icon {
+  font-size: 30px;
+}
+
+.menu-items {
+  background-color: transparent;
+  border: none;
+}
+*/
