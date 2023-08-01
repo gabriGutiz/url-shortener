@@ -274,6 +274,21 @@
 			]
 		}
 	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "username",
+				"value": "gabriGutiz",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "Gabri1008@",
+				"type": "string"
+			}
+		]
+	},
 	"event": [
 		{
 			"listen": "prerequest",

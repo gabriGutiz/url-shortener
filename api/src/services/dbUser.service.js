@@ -12,7 +12,7 @@ class DbUserService {
         if (filtro?.user) userFiltro.user = filtro.user;
         if (filtro?.ativo) userFiltro.ativo = filtro.ativo;
 
-        const users = await User.find(userFiltro).exec();
+        let users = await User.find(userFiltro).exec();
         if (filtro?.dataInicioCriacao) users = users.filter(user => user.dataCriacao >= filtro.dataInicioCriacao);
         if (filtro?.dataFimCriacao) users = users.filter(user => user.dataCriacao <= filtro.dataFimCriacao);
 
@@ -43,7 +43,7 @@ class DbUserService {
 
     async validarLogin(request) {
         const user = await User.findOne({ user: request.user }).exec();
-        return (user.ativo && user.senha === request.senha);
+        return (user?.ativo && user?.senha === request.senha);
     }
 }
 

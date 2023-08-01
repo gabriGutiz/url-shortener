@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { CriarUrlRequest } from "src/app/models/urlsControl/criarUrlRequest.model";
@@ -11,6 +11,12 @@ import { environment } from "src/environments/environment";
 export class UrlsControlService {
   constructor(private http: HttpClient) {}
 
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Authorization': 'Basic ' + btoa(`${environment.user}:${environment.senha}`)
+    })
+  };
+
   urlPath = {
     api: 'api',
     controller: 'urls',
@@ -19,7 +25,8 @@ export class UrlsControlService {
   criarUrl(criarUrlRequest: CriarUrlRequest): Observable<string> {
     return this.http.post<string>(
       `${environment.api}/${this.urlPath.api}/${this.urlPath.controller}`,
-      criarUrlRequest
+      criarUrlRequest,
+      this.httpOptions
     );
   }
 
@@ -28,19 +35,21 @@ export class UrlsControlService {
     query += filtros.ativo === undefined ? '' : `ativo=${filtros.ativo}`;
     query += filtros.url === undefined ? '' : `url=${filtros.url}`;
 
-    return this.http.get<UrlsResponse>(query);
+    return this.http.get<UrlsResponse>(query, this.httpOptions);
   }
 
   buscarStatus(urlId: string): Observable<StatusResponse> {
     return this.http.get<StatusResponse>(
-      `${environment.api}/${this.urlPath.api}/${urlId}/status`
+      `${environment.api}/${this.urlPath.api}/${urlId}/status`,
+      this.httpOptions
     );
   }
 
   ativarDesativarUrl(urlId: string): Observable<null> {
     return this.http.put<null>(
       `${environment.api}/${this.urlPath.api}/${urlId}/ativar-desativar`,
-      {}
+      {},
+      this.httpOptions
     );
   }
 }

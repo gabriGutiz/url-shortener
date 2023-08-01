@@ -1,12 +1,15 @@
 import express from 'express';
 import { configEnv } from './config/env.config.js';
 import { CustomError } from './utils/CustomError.js';
+import { auth } from './routes/authorization.js';
 import cors from 'cors';
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
+
+app.use(auth);
 
 import { urlsRouter } from './routes/urls.route.js';
 import { indexRouter } from './routes/index.route.js';
