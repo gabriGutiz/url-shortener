@@ -10,8 +10,10 @@ app.use(cors());
 
 import { urlsRouter } from './routes/urls.route.js';
 import { indexRouter } from './routes/index.route.js';
+import { usersRouter } from './routes/users.route.js';
 
 app.use('/api/urls', urlsRouter);
+app.use('/api/users', usersRouter);
 app.use('/api', indexRouter);
 
 app.use((error, req, res, next) => {

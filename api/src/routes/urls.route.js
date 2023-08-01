@@ -1,6 +1,6 @@
 import express from 'express';
-import { validateCriarUrlReq } from '../models/schemas/criarUrl.schema.js';
-import { validateBuscarUrlsReq } from '../models/schemas/buscarUrls.schema.js';
+import { validateCriarUrlReq } from '../models/schemas/urls/criarUrl.schema.js';
+import { validateBuscarUrlsReq } from '../models/schemas/urls/buscarUrls.schema.js';
 import { UrlService } from '../services/urls.service.js';
 
 const router = express.Router();

@@ -27,7 +27,7 @@ class DbService {
             dataExpiracao: registroUrl.dataExpiracao,
             dataCriacao: new Date()
         });
-        novoUrl.save();
+        await novoUrl.save();
 
         return novoUrl;
     }
