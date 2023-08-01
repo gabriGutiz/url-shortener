@@ -40,6 +40,7 @@ class UrlService {
         const url = await this._buscarUrl(idUrl);
         const motivos = motivosUrlInativo(url);
         return {
+            ativo: motivos.length > 0,
             status: motivos.length === 0 ? 'ativo' : 'inativo',
             motivos: motivos
         };

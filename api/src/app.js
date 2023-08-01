@@ -1,16 +1,18 @@
 import express from 'express';
 import { configEnv } from './config/env.config.js';
 import { CustomError } from './utils/CustomError.js';
+import cors from 'cors';
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cors());
 
 import { urlsRouter } from './routes/urls.route.js';
 import { indexRouter } from './routes/index.route.js';
 
-app.use('/urls', urlsRouter);
-app.use('', indexRouter);
+app.use('/api/urls', urlsRouter);
+app.use('/api', indexRouter);
 
 app.use((error, req, res, next) => {
     if (error instanceof CustomError) {
