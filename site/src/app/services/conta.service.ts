@@ -42,6 +42,6 @@ export class ContaService {
   logout() {
     localStorage.removeItem('user');
     this.userSubject.next(null);
-    this.router.navigate(['/conta/login']);
+    this.router.navigate(['/login']);
   }
 }

@@ -1,3 +1,4 @@
+import { ContaService } from 'src/app/services/conta.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+  constructor(
+    private contaService: ContaService
+  ) {}
 
+  logout() {
+    this.contaService.logout();
+  }
 }
