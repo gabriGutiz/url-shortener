@@ -1,10 +1,10 @@
-import { DbService } from "./db.service.js";
+import { DbUrlService } from "./dbUrl.service.js";
 import { urlEstaAtivo } from "../utils/url.util.js";
 import { CustomError } from "../utils/CustomError.js";
 
 class IndexService {
     constructor() {
-        this._dbService = new DbService();
+        this._dbService = new DbUrlService();
     }
 
     async buscarUrlPorId(id) {

@@ -1,6 +1,7 @@
 import { mongoConnection } from '../config/db.config.js';
 import { User } from '../models/User.model.js';
 import { CustomError } from '../utils/CustomError.js';
+import mongoose from 'mongoose';
 
 class DbUserService {
     constructor() {
@@ -23,6 +24,7 @@ class DbUserService {
         const users = await this.buscarUsers({ user: request.user });
         if (users?.length === 0) {
             const novoUser = new User({
+                _id: new mongoose.Types.ObjectId(),
                 user: request.user,
                 senha: request.senha
             });

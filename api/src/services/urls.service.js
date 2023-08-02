@@ -1,22 +1,15 @@
 import { CustomError } from '../utils/CustomError.js';
-import { urlCompleto, urlEstaAtivo, motivosUrlInativo } from '../utils/url.util.js';
-import { DbService } from './db.service.js';
+import { urlCompleto, motivosUrlInativo } from '../utils/url.util.js';
+import { DbUrlService } from './dbUrl.service.js';
 
 class UrlService {
     constructor() {
-        this._dbService = new DbService();
+        this._dbService = new DbUrlService();
     }
 
     async buscarUrls(filtros) {
-        if (filtros?.url) {
-            const urls = await this._dbService.buscarRegistrosPorUrl(filtros.url);
-            if (urls?.length !== 0) {
-                return this._filtrarAtivos(filtros, urls);
-            }
-            return null;
-        }
-        const todasUrls = await this._dbService.buscarTodasUrls();
-        return this._filtrarAtivos(filtros, todasUrls);
+        let urls = await this._dbService.buscarUrls(filtros);
+        return urls;
     }
 
     async criarUrl(urlRequest, baseUrl) {
@@ -58,13 +51,6 @@ class UrlService {
         const url = await this._dbService.buscarRegistroPorUrlId(idUrl);
         if (!url) throw new CustomError(404, `Não foi encontrado nenhum registro para o id ${idUrl}`);
         return url;
-    }
-
-    _filtrarAtivos(filtros, arrayUrls) {
-        if (filtros.hasOwnProperty('ativo')) {
-            arrayUrls = arrayUrls.filter(url => filtros.ativo ? urlEstaAtivo(url) : !urlEstaAtivo(url));
-        }
-        return arrayUrls;
     }
 
     async _criarNovaUrl(urlReq, baseUrl) {

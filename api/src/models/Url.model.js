@@ -2,8 +2,9 @@ import mongoose from 'mongoose';
 
 const UrlSchema = new mongoose.Schema({
     _id: {
-        type: String,
-        select: false
+        type: mongoose.Schema.ObjectId,
+        select: false,
+        default: new mongoose.Types.ObjectId()
     },
     urlId: {
         type: String,

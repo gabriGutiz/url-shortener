@@ -2,8 +2,10 @@ import express from 'express';
 import { validateCriarUrlReq } from '../models/schemas/urls/criarUrl.schema.js';
 import { validateBuscarUrlsReq } from '../models/schemas/urls/buscarUrls.schema.js';
 import { UrlService } from '../services/urls.service.js';
+import { auth } from './authorization.js';
 
 const router = express.Router();
+router.use(auth);
 router.post('', async (req, res, next) => {
     const { error, value } = validateCriarUrlReq(req.body);
     if (error) {

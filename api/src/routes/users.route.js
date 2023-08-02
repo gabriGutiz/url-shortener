@@ -4,8 +4,10 @@ import { validateBuscarUsersReq } from '../models/schemas/users/buscarUsers.sche
 import { validateCriarUserReq } from '../models/schemas/users/criarUser.schema.js';
 import { validateAlterarUserReq } from '../models/schemas/users/alterarUser.schema.js';
 import { validateLoginReq } from '../models/schemas/users/login.schema.js';
+import { auth } from "./authorization.js";
 
 const router = express.Router();
+router.use(auth);
 router.get('/', async (req, res, next) => {
     const { error, value } = validateBuscarUsersReq(req.query);
     if (error) {
