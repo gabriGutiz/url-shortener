@@ -1,0 +1,33 @@
+table {
+  width: 100%;
+}
+
+tr.linha-detalhe {
+  height: 0;
+}
+
+tr.linha-elemento:not(.linha-expandida):hover {
+  background: whitesmoke;
+}
+
+tr.linha-elemento:not(.linha-expandida):active {
+  background: #efefef;
+}
+
+.linha-elemento td {
+  border-bottom-width: 0;
+}
+
+.expandir-detalhes {
+  overflow: hidden;
+  display: flex;
+}
+
+.expandir-detalhes {
+  min-width: 80px;
+  border: 2px solid black;
+  padding: 8px;
+  font-weight: lighter;
+  margin: 8px 0;
+  height: 104px;
+}

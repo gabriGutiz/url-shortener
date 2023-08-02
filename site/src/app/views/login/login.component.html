@@ -1,0 +1,35 @@
+<div class="card">
+  <h4 class="card-header">Login</h4>
+  <div class="card-body">
+    <form [formGroup]="form" (ngSubmit)="submitLogin()">
+      <div class="mb-3">
+        <label class="form-label">Username</label>
+        <input
+          type="text"
+          formControlName="user"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f['user'].errors }">
+        <div *ngIf="submitted && f['user'].errors" class="invalid-feedback">
+          <div *ngIf="f['user'].errors['required']">É necessário fornecer user</div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Senha</label>
+        <input
+          type="password"
+          formControlName="senha"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f['senha'].errors }">
+        <div *ngIf="submitted && f['senha'].errors" class="invalid-feedback">
+          <div *ngIf="f['senha'].errors['required']">É necessário fornecer a senha</div>
+        </div>
+      </div>
+      <div>
+        <button [disabled]="loadingService.loading" class="btn-primary">
+          <span *ngIf="loadingService.loading" class="spinner-border spinner-border-sm me-1"></span>
+          Login
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -10,8 +10,7 @@
         <div class="list-item"
           type="button"
           [ngbPopover]="popContent"
-          placement="bottom"
-          triggers="mouseenter">
+          placement="bottom">
           <div>Admin</div>
           <mat-icon class="list-icon">keyboard_arrow_down</mat-icon>
         </div>
@@ -32,8 +31,7 @@
         <div class="list-item"
           type="button"
           [ngbPopover]="popContentUser"
-          placement="bottom"
-          triggers="mouseenter">
+          placement="bottom">
           <div>User</div>
           <mat-icon class="list-icon">keyboard_arrow_down</mat-icon>
         </div>
@@ -43,7 +41,7 @@
               <mat-icon class="link-icon">perm_identity</mat-icon>
               <div>Alterar usuário</div>
             </div>
-            <div class="link-div" type="button" routerLink="/usuarios">
+            <div class="link-div" type="button" (click)="logout()">
               <mat-icon class="link-icon">exit_to_app</mat-icon>
               <div>Sair</div>
             </div>

@@ -5,17 +5,28 @@ import { Url } from 'src/app/models/urlsControl/url.model';
 import { UrlsResponse } from 'src/app/models/urlsControl/urlsReponse.model';
 import { LoadingService } from 'src/app/services/loading.service';
 import { UrlsControlService } from 'src/app/services/urls-control/urlsControl.service';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-urls-control',
   templateUrl: './urls-control.component.html',
-  styleUrls: ['./urls-control.component.css']
+  styleUrls: ['./urls-control.component.css'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
+      transition(
+        'expanded <=> collapsed',
+        animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')
+      ),
+    ]),
+  ],
 })
 export class UrlsControlComponent implements OnInit {
 
   filtroBuscarUrls: FiltroUrlsRequest = new FiltroUrlsRequest();
   urls: Array<Url> = new Array<Url>;
-  colunas = [""];
+  colunas = ["urlId", "urlOriginal", "ativo"];
   elementoExpandido: Url = new Url();
 
   constructor(
