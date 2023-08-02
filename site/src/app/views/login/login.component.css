@@ -1,0 +1,43 @@
+
+mat-card {
+  margin: auto;
+  background: white;
+  color: #222;
+  border-radius: 10px;
+  min-height: min-content;
+  max-height: 300px;
+  height: 40%;
+  min-width: min-content;
+  max-width: 500px;
+  width: 60%;
+}
+
+div.content {
+  margin: auto;
+  justify-content: center;
+}
+
+input {
+  background: #ededed;
+  max-width: 400px;
+  border-radius: 1pc;
+}
+
+button {
+  border: none;
+  border-radius: 2pc;
+  background: #222;
+  color: white;
+  width: 100%;
+  max-width: 500px;
+  height: 40px;
+}
+
+mat-card-title {
+  font-size: x-large!important;
+}
+
+mat-card-content {
+  font-size: large;
+  width: 100%;
+}

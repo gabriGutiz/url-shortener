@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ContaService } from 'src/app/services/conta.service';
+import { first } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -37,8 +38,17 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.loadingService.iniciar();
-    this.contaService.login(this.f['user'].value, this.f['senha'].value);
-    this.router.navigate(['/']);
-    this.loadingService.finalizar();
+    this.contaService.login(this.f['user'].value, this.f['senha'].value)
+      .pipe(first())
+      .subscribe({
+        next: () => {
+          this.router.navigate(['/']);
+          this.loadingService.finalizar();
+        },
+        error: () => {
+          this.snackBarService.falha("Usuário ou senha inválidos");
+          this.loadingService.finalizar();
+        }
+      });
   }
 }

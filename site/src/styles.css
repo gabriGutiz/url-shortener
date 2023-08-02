@@ -1,13 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
 
-.primary-blue {
-  color: rgb(0 184 173);
-}
-
-.primary-pink {
-  color: rgb(251, 160, 177);
-}
-
-.sec-pink {
-  color: #fff3f3;
+html, body {
+  height: 100%;
+  width: 100%;
+  background: rgb(131,58,180);
+  background: linear-gradient(45deg, rgba(131,58,180,1) 0%, rgba(180,58,149,1) 49%, rgba(253,29,87,1) 100%, rgba(255,78,52,1) 100%);
 }

@@ -1,0 +1,12 @@
+
+mat-card {
+  width: 90%;
+  max-width: 10000px;
+  background: #222;
+  font-family: 'Space Grotesk';
+  margin: auto;
+  height: 95%;
+  color: #9d9d9d;
+  border: none;
+  border-radius: 10px;
+}
