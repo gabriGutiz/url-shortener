@@ -46,6 +46,8 @@ export class UrlsControlService {
     );
   }
 
+  alterarUrl()
+
   ativarDesativarUrl(urlId: string | undefined): Observable<null> {
     return this.http.put<null>(
       `${environment.api}/${this.urlPath.api}/${this.urlPath.controller}/${urlId}/ativar-desativar`,

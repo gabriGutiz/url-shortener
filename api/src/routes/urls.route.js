@@ -1,8 +1,10 @@
 import express from 'express';
 import { validateCriarUrlReq } from '../models/schemas/urls/criarUrl.schema.js';
 import { validateBuscarUrlsReq } from '../models/schemas/urls/buscarUrls.schema.js';
+import { validateAlterarUrlReq } from '../models/schemas/urls/alterarUrl.schema.js';
 import { UrlService } from '../services/urls.service.js';
 import { auth } from './authorization.js';
+import { CustomError } from '../utils/CustomError.js';
 
 const router = express.Router();
 router.use(auth);
@@ -39,6 +41,9 @@ router.get('/', async (req, res, next) => {
 });
 
 router.get('/:id/status', async (req, res, next) => {
+    if (!req.params.id) {
+        throw new CustomError(400 ,'O id da url é obrigatório');
+    }
     await new UrlService().buscarStatus(req.params.id)
         .then((response) => {
             return res.status(200).send(response);
@@ -48,6 +53,21 @@ router.get('/:id/status', async (req, res, next) => {
 
 router.put('/:id/ativar-desativar', async (req, res, next) => {
     await new UrlService().ativarDesativarUrl(req.params.id)
+        .then(() => {
+            return res.status(200).send();
+        })
+        .catch((err) => next(err));
+});
+
+router.put('/:id/', async (req, res, next) => {
+    if (!req.params.id) {
+        throw new CustomError(400 ,'O id da url é obrigatório');
+    }
+    const { error, value } = validateAlterarUrlReq(req.body);
+    if (error) {
+        return res.status(400).send(error.details);
+    }
+    await new UrlService().alterarUrl(req.params.id, value)
         .then(() => {
             return res.status(200).send();
         })

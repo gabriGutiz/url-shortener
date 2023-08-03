@@ -45,6 +45,12 @@ class UrlService {
         await this._dbService.alterarRegistro(url);
     }
 
+    async alterarUrl(urlId, alterarUrlReq) {
+        const url = await this._buscarUrl(urlId);
+        alterarUrlReq.urlId = url.urlId;
+        await this._dbService.alterarRegistro(alterarUrlReq);
+    }
+
     async _buscarUrl(idUrl) {
         if (!idUrl) throw new CustomError(400, 'É necessário passar o id da url');
 
