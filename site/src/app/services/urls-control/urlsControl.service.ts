@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { AlterarUrlRequest } from "src/app/models/urlsControl/alterarUrl.model";
 import { CriarUrlRequest } from "src/app/models/urlsControl/criarUrlRequest.model";
 import { FiltroUrlsRequest } from "src/app/models/urlsControl/filtroUrlsRequest.model";
 import { StatusResponse } from "src/app/models/urlsControl/urlStatusResponse.model";
@@ -46,7 +47,13 @@ export class UrlsControlService {
     );
   }
 
-  alterarUrl()
+  alterarUrl(urlId: string | undefined, request: AlterarUrlRequest): Observable<null> {
+    return this.http.put<null>(
+      `${environment.api}/${this.urlPath.api}/${this.urlPath.controller}/${urlId}`,
+      request,
+      this.httpOptions
+    );
+  }
 
   ativarDesativarUrl(urlId: string | undefined): Observable<null> {
     return this.http.put<null>(

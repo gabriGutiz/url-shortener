@@ -11,20 +11,32 @@
     <div class="campo">
       <mat-form-field appearance="outline">
           <mat-label>URL Original</mat-label>
-          <input matInput name="urlOrg" type="text" [(ngModel)]="url.urlOriginal">
+          <input matInput
+            name="urlOrg"
+            type="text"
+            [defaultValue]="url.urlOriginal"
+            [(ngModel)]="urlAlterado.url">
         </mat-form-field>
       </div>
       <div class="campo">
         <mat-form-field appearance="outline">
           <mat-label>Descrição</mat-label>
-          <textarea matInput name="desc" type="text" [(ngModel)]="url.descricao"></textarea>
+          <textarea matInput
+            name="desc"
+            type="text"
+            [defaultValue]="url.descricao"
+            [(ngModel)]="urlAlterado.descricao"></textarea>
         </mat-form-field>
       </div>
     <div class="campo">
       <div class="campo-peq">
         <mat-form-field appearance="outline">
           <mat-label>Qntd. máxima de acessos</mat-label>
-          <input matInput name="accMax" type="text" [(ngModel)]="url.acessoMaximo">
+          <input matInput
+            name="accMax"
+            type="text"
+            [defaultValue]="url.acessoMaximo"
+            [(ngModel)]="urlAlterado.acessoMaximo">
         </mat-form-field>
       </div>
       <div class="spacer-campo"></div>
@@ -42,8 +54,9 @@
           <input matInput
             name="dtExp"
             type="date"
+            [defaultValue]="url.dataExpiracao"
             [matDatepicker]="picker"
-            [(ngModel)]="url.dataExpiracao">
+            [(ngModel)]="urlAlterado.dataExpiracao">
           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>

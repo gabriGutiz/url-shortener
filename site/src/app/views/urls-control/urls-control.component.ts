@@ -48,13 +48,19 @@ export class UrlsControlComponent implements OnInit {
     this.dialog.open(EditarUrlDialogComponent, {
       data: url,
       width: 'max(300px, min(50%, 500px))'
-    });
-    this.buscarUrls();
+    }).afterClosed().subscribe(() => {
+        this.buscarUrls();
+        this.loadingService.finalizar();
+      }
+    );
   }
 
   abrirModalCriar() {
     this.dialog.open(CriarUrlDialogComponent, {
       width: 'max(300px, min(50%, 500px))'
+    }).afterClosed().subscribe(() => {
+      this.buscarUrls();
+      this.loadingService.finalizar();
     });
   }
 
