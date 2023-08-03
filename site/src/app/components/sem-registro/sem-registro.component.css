@@ -1,3 +1,23 @@
+.sem-registro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.sem-registro span, mat-icon {
+  position: absolute;
+  top: 0;
+}
+
+.sem-registro span {
+  margin-top: 4rem;
+}
+
+span {
+  font-size: x-large;
+}
+
 .icone {
   font-size: 50px;
   height: 50px;

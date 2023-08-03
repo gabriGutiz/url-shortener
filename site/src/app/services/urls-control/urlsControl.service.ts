@@ -32,8 +32,9 @@ export class UrlsControlService {
 
   buscarUrls(filtros: FiltroUrlsRequest): Observable<UrlsResponse> {
     let query = `${environment.api}/${this.urlPath.api}/${this.urlPath.controller}?`;
-    query += filtros.ativo === undefined ? '' : `ativo=${filtros.ativo}`;
-    query += filtros.url === undefined ? '' : `url=${filtros.url}`;
+    query += filtros.ativo === undefined ? '' : `ativo=${filtros.ativo}&`;
+    query += filtros.urlId === undefined || filtros.urlId === "" ? '' : `urlId=${filtros.urlId}&`;
+    query += filtros.url === undefined || filtros.url === "" ? '' : `url=${filtros.url}`;
 
     return this.http.get<UrlsResponse>(query, this.httpOptions);
   }
@@ -45,9 +46,9 @@ export class UrlsControlService {
     );
   }
 
-  ativarDesativarUrl(urlId: string): Observable<null> {
+  ativarDesativarUrl(urlId: string | undefined): Observable<null> {
     return this.http.put<null>(
-      `${environment.api}/${this.urlPath.api}/${urlId}/ativar-desativar`,
+      `${environment.api}/${this.urlPath.api}/${this.urlPath.controller}/${urlId}/ativar-desativar`,
       {},
       this.httpOptions
     );

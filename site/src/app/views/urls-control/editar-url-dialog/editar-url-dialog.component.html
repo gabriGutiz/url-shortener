@@ -1,0 +1,67 @@
+<div class="main">
+  <div class="header">
+    <div class="titulo">/{{url.urlId}}</div>
+    <div class="spacer"></div>
+    <button
+      [ngClass]="url.ativo ? 'desativar' : 'ativar'" class="btn" (click)="ativarDesativar()">
+      {{url.ativo ? "Desativar" : "Ativar"}}
+    </button>
+  </div>
+  <form #form="ngForm">
+    <div class="campo">
+      <mat-form-field appearance="outline">
+          <mat-label>URL Original</mat-label>
+          <input matInput name="urlOrg" type="text" [(ngModel)]="url.urlOriginal">
+        </mat-form-field>
+      </div>
+      <div class="campo">
+        <mat-form-field appearance="outline">
+          <mat-label>Descrição</mat-label>
+          <textarea matInput name="desc" type="text" [(ngModel)]="url.descricao"></textarea>
+        </mat-form-field>
+      </div>
+    <div class="campo">
+      <div class="campo-peq">
+        <mat-form-field appearance="outline">
+          <mat-label>Qntd. máxima de acessos</mat-label>
+          <input matInput name="accMax" type="text" [(ngModel)]="url.acessoMaximo">
+        </mat-form-field>
+      </div>
+      <div class="spacer-campo"></div>
+      <div class="campo-peq">
+        <mat-form-field appearance="outline">
+          <mat-label>Qtnd. de clicks</mat-label>
+          <input matInput name="clicks" type="text" [defaultValue]="url.clicks" disabled>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="campo">
+      <div class="campo-peq">
+        <mat-form-field appearance="outline">
+          <mat-label>Data Expiração</mat-label>
+          <input matInput
+            name="dtExp"
+            type="date"
+            [matDatepicker]="picker"
+            [(ngModel)]="url.dataExpiracao">
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="campo-peq">
+        <mat-form-field appearance="outline">
+          <mat-label>Data Criação</mat-label>
+          <input matInput name="dtCria" type="date" [defaultValue]="url.dataCriacao" disabled>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="btns">
+      <div>
+        <button class="button" mat-raised-button matInput (click)="fechar()">Cancelar</button>
+      </div>
+      <div>
+        <button class="button" mat-raised-button matInput (click)="salvarAlteracao()">Salvar</button>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,126 @@
+
+.main {
+  width: 90%;
+  height: 90%;
+  margin: 5%
+}
+
+.header {
+  display: flex;
+  margin-bottom: 5%;
+}
+
+.titulo {
+  font-size: xx-large;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.btn {
+  height: 50%;
+  appearance: none;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Inter,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: normal;
+  line-height: 1.5;
+  outline: none;
+  overflow: hidden;
+  padding: 13px 20px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transform: translate3d(0, 0, 0);
+  transition: all .3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  opacity: 1;
+  transform: translateY(0);
+  transition-duration: .35s;
+}
+
+.btn:active {
+  transform: translateY(2px);
+  transition-duration: .35s;
+}
+
+form {
+  font-size: large;
+  font-family: 'Roboto';
+  width: 100%;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.campo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.campo-peq {
+  width: 47.5%;
+}
+
+.button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 20px;
+  font-family: 'Roboto';
+  border-radius: 6px;
+  border: none;
+  font-size: large;
+
+  background: #222;
+  box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.1), inset 0px 0.5px 0.5px rgba(255, 255, 255, 0.5), 0px 0px 0px 0.5px rgba(0, 0, 0, 0.12);
+  color: #DFDEDF;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button:focus {
+  box-shadow: inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2), 0px 0.5px 1px rgba(0, 0, 0, 0.1), 0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);
+  outline: 0;
+}
+
+.btns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.desativar {
+  background-color: #d05656;
+  box-shadow: rgba(174, 39, 39, 0.15) 0 4px 9px;
+}
+.desativar:hover {
+  background-color: #ce2f2f;
+  box-shadow: rgba(174, 39, 39, 0.2) 0 6px 12px;
+}
+
+.ativar {
+  background-color: #27ae60;
+  box-shadow: rgba(39, 174, 96, .15) 0 4px 9px;
+}
+.ativar:hover {
+  background-color: #1e8449;
+  box-shadow: rgba(39, 174, 96, .2) 0 6px 12px;
+}
+

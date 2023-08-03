@@ -8,4 +8,5 @@ export class Url {
   dataExpiracao?: Date;
   dataCriacao?: Date;
   ativo?: boolean;
+  expanded: boolean = false;
 }

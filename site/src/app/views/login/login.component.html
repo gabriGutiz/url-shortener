@@ -8,6 +8,7 @@
           <input
             type="text"
             formControlName="user"
+            required
             class="form-control"
             [ngClass]="{ 'is-invalid': submitted && f['user'].errors }">
           <div *ngIf="submitted && f['user'].errors" class="invalid-feedback">
@@ -19,6 +20,7 @@
           <input
             type="password"
             formControlName="senha"
+            required
             class="form-control"
             [ngClass]="{ 'is-invalid': submitted && f['senha'].errors }">
           <div *ngIf="submitted && f['senha'].errors" class="invalid-feedback">

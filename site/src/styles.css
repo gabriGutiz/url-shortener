@@ -1,7 +1,14 @@
-
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 html, body {
   height: 100%;
   width: 100%;
+}
+
+.default-bg {
   background: rgb(131,58,180);
   background: linear-gradient(45deg, rgba(131,58,180,1) 0%, rgba(180,58,149,1) 49%, rgba(253,29,87,1) 100%, rgba(255,78,52,1) 100%);
+}
+
+a.link {
+  text-decoration: none;
 }

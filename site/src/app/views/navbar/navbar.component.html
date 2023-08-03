@@ -1,53 +1,45 @@
-<nav class="navbar navbar-light">
-  <div class="container">
-    <div class="container-parent" type="button">
+<div class="header">
+  <mat-toolbar>
+    <a class="link" routerLink="/">
       <img class="brand-photo" src="../../../assets/url-photo.png" />
-      <div class="navbar-brand" routerLink="/">Chinelli</div>
+      <span class="brand">Chinelli</span>
+    </a>
+    <div class="left-item list-item"
+      type="button"
+      [ngbPopover]="popContent"
+      placement="bottom">
+      <div>Admin</div>
+      <mat-icon class="list-icon">keyboard_arrow_down</mat-icon>
     </div>
-
-    <ul class="nav navbar-nav pull-xs-right">
-      <li>
-        <div class="list-item"
-          type="button"
-          [ngbPopover]="popContent"
-          placement="bottom">
-          <div>Admin</div>
-          <mat-icon class="list-icon">keyboard_arrow_down</mat-icon>
+    <ng-template #popContent>
+      <div type="button" class="link-div" routerLink="/urls">
+        <mat-icon class="link-icon">http</mat-icon>
+        <span class="text-bar">Controle de URLs</span>
+      </div>
+      <div class="link-div" type="button" routerLink="/usuarios">
+        <mat-icon class="link-icon">accessibility_new</mat-icon>
+        <span class="text-bar">Controle de Usuários</span>
+      </div>
+    </ng-template>
+    <span class="spacer"></span>
+    <div class="list-item"
+      type="button"
+      [ngbPopover]="popContentUser"
+      placement="bottom">
+      <mat-icon class="icon-user">account_circle</mat-icon>
+      <div class="header-text">User</div>
+    </div>
+    <ng-template #popContentUser>
+      <div class="links-div">
+        <div class="link-div" type="button" routerLink="/urls">
+          <mat-icon class="link-icon">perm_identity</mat-icon>
+          <div>Alterar usuário</div>
         </div>
-        <ng-template #popContent>
-          <div class="links-div">
-            <div class="link-div" type="button" routerLink="/urls">
-              <mat-icon class="link-icon">http</mat-icon>
-              <div>Controle de URLs</div>
-            </div>
-            <div class="link-div" type="button" routerLink="/usuarios">
-              <mat-icon class="link-icon">accessibility_new</mat-icon>
-              <div>Controle de Usuários</div>
-            </div>
-          </div>
-        </ng-template>
-      </li>
-      <li>
-        <div class="list-item"
-          type="button"
-          [ngbPopover]="popContentUser"
-          placement="bottom">
-          <div>User</div>
-          <mat-icon class="list-icon">keyboard_arrow_down</mat-icon>
+        <div class="link-div" type="button" (click)="logout()">
+          <mat-icon class="link-icon">exit_to_app</mat-icon>
+          <div>Sair</div>
         </div>
-        <ng-template #popContentUser>
-          <div class="links-div">
-            <div class="link-div" type="button" routerLink="/urls">
-              <mat-icon class="link-icon">perm_identity</mat-icon>
-              <div>Alterar usuário</div>
-            </div>
-            <div class="link-div" type="button" (click)="logout()">
-              <mat-icon class="link-icon">exit_to_app</mat-icon>
-              <div>Sair</div>
-            </div>
-          </div>
-        </ng-template>
-      </li>
-    </ul>
-  </div>
-</nav>
+      </div>
+    </ng-template>
+  </mat-toolbar>
+</div>

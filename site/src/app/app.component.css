@@ -1,8 +1,5 @@
 
 .content {
   margin: auto;
-  /*TODO: colocar background*/
-  /*background-color: aqua;
-  /*background: linear-gradient(-255deg, #E6007E, 50%, #4B0082, 80%);*/
   background: linear-gradient(-225deg, rgba(0,0,0,0.6) 50%, rgba(0,36,61,0.6) 80%);
 }
