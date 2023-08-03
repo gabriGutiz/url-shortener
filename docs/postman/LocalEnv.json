@@ -1,0 +1,15 @@
+{
+	"id": "10938354-b345-466c-bc77-d4585362fff2",
+	"name": "LocalEnv",
+	"values": [
+		{
+			"key": "BaseUrl",
+			"value": "http://localhost:8000",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2023-08-03T11:44:45.752Z",
+	"_postman_exported_using": "Postman/10.16.5"
+}
