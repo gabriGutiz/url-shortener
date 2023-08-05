@@ -1,6 +1,6 @@
 import { mongoConnection } from "../config/db.config.js";
 import { Url } from "../models/Url.model.js";
-import { urlEstaAtivo } from "../utils/url.util.js";
+import { urlEstaAtivo, motivosUrlInativo } from "../utils/url.util.js";
 import mongoose from "mongoose";
 
 class DbUrlService {
@@ -23,10 +23,25 @@ class DbUrlService {
         if (filtro?.urlOriginal) userFiltro.urlOriginal = filtro.urlOriginal;
 
         let urls = await Url.find(userFiltro).exec();
-        if (urls?.length !== 0) {
-            return this._filtrarAtivos(filtro, urls);
+        
+        let urlsAlteradas = urls.map(item => {
+            return {
+                urlId: item.urlId,
+                urlOriginal: item.urlOriginal,
+                descricao: item.descricao,
+                acessoMaximo: item.acessoMaximo,
+                clicks: item.clicks,
+                dataExpiracao: item.dataExpiracao,
+                dataCriacao: item.dataCriacao,
+                ativo: item.ativo,
+                motivoInativo: motivosUrlInativo(item).join('\n')
+            };
+        });
+        
+        if (urlsAlteradas?.length !== 0) {
+            return this._filtrarAtivos(filtro, urlsAlteradas);
         }
-        return urls;
+        return urlsAlteradas;
     }
 
     async criarRegistro(registroUrl) {

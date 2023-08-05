@@ -8,7 +8,7 @@ class UrlService {
     }
 
     async buscarUrls(filtros) {
-        let urls = await this._dbService.buscarUrls(filtros);
+        const urls = await this._dbService.buscarUrls(filtros);
         return urls;
     }
 
