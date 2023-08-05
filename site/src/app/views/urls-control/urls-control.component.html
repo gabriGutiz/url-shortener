@@ -17,7 +17,7 @@
       name="url">
     </mat-form-field>
     <mat-form-field appearance="outline">
-      <mat-select [(value)]="buscarFiltro" def>
+      <mat-select [(value)]="buscarFiltro" (selectionChange)="buscarUrls()" def>
         <mat-option value="todos">Todos</mat-option>
         <mat-option value="ativos">Ativos</mat-option>
         <mat-option value="">Inativos</mat-option>

@@ -35,7 +35,6 @@
           <input matInput
             name="accMax"
             type="text"
-            [defaultValue]="url.acessoMaximo"
             [(ngModel)]="urlAlterado.acessoMaximo">
         </mat-form-field>
       </div>
@@ -54,7 +53,6 @@
           <input matInput
             name="dtExp"
             type="date"
-            [defaultValue]="url.dataExpiracao"
             [matDatepicker]="picker"
             [(ngModel)]="urlAlterado.dataExpiracao">
           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>

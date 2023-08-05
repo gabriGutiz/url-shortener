@@ -19,6 +19,7 @@ export class CriarUrlDialogComponent {
     private snackBarService: SnackBarService,
   ) { }
 
+  minData: Date = new Date();
   novoUrl: CriarUrlRequest = new CriarUrlRequest();
 
   fechar() {

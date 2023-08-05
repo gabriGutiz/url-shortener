@@ -23,6 +23,7 @@
         <input matInput
           name="dtExp"
           type="date"
+          [min]="minData"
           [matDatepicker]="picker"
           [(ngModel)]="novoUrl.dataExpiracao">
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
