@@ -45,7 +45,7 @@ class DbUrlService {
     }
 
     async alterarRegistro(urlAlterado) {
-        await Url.updateOne({ urlId: urlAlterado.urlId }, urlAlterado).exec();
+        await Url.findOneAndUpdate({ urlId: urlAlterado.urlId }, urlAlterado).exec();
     }
 
     async updateClicks(urlId) {

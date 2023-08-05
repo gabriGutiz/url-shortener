@@ -48,7 +48,14 @@ class UrlService {
     async alterarUrl(urlId, alterarUrlReq) {
         const url = await this._buscarUrl(urlId);
         alterarUrlReq.urlId = url.urlId;
-        await this._dbService.alterarRegistro(alterarUrlReq);
+        const alterar = {
+            urlOriginal: alterarUrlReq.url,
+            urlId: url.urlId,
+            descricao: alterarUrlReq.descricao || '',
+            dataExpiracao: alterarUrlReq.dataExpiracao,
+            acessoMaximo: alterarUrlReq.acessoMaximo
+        };
+        await this._dbService.alterarRegistro(alterar);
     }
 
     async _buscarUrl(idUrl) {

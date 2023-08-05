@@ -59,9 +59,9 @@ router.put('/:id/ativar-desativar', async (req, res, next) => {
         .catch((err) => next(err));
 });
 
-router.put('/:id/', async (req, res, next) => {
+router.put('/:id', async (req, res, next) => {
     if (!req.params.id) {
-        throw new CustomError(400 ,'O id da url é obrigatório');
+        throw new CustomError(400, 'O id da url é obrigatório');
     }
     const { error, value } = validateAlterarUrlReq(req.body);
     if (error) {
