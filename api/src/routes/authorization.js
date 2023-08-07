@@ -9,11 +9,16 @@ async function auth(req, res, next) {
     const [user, senha] = Buffer.from(credenciaisBase64, 'base64').toString('ascii').split(':');
     
     const dbService = new DbUserService();
-    const loginValido = await dbService.validarLogin({ user: user, senha: senha });
-    if (!loginValido) {
-        return res.status(401).send('Credenciais de autorização inválidas');
-    }
-    next();
+    await dbService.validarLogin({ user: user, senha: senha })
+        .then((loginValido) => {
+            if (!loginValido) {
+                return res.status(401).send('Credenciais de autorização inválidas');
+            }
+            next();
+        })
+        .catch((err) => {
+            return res.status(500).send('Erro interno');
+        });
 }
 
 export { auth };

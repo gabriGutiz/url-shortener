@@ -45,8 +45,12 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/']);
           this.loadingService.finalizar();
         },
-        error: () => {
-          this.snackBarService.falha("Usuário ou senha inválidos");
+        error: (err) => {
+          if (err.status == 500) {
+            this.snackBarService.falha("Erro interno, tente novamente mais tarde");
+          } else {
+            this.snackBarService.falha("Usuário ou senha inválidos");
+          }
           this.loadingService.finalizar();
         }
       });
