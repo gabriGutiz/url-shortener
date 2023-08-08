@@ -1,10 +1,15 @@
 mat-card-title {
   font-size: xx-large;
+  font-family: 'Space Mono';
   margin: 20px;
 }
 
 mat-card-content {
   margin: auto;
+}
+
+th, td {
+  font-family: 'Space Mono';
 }
 
 form {

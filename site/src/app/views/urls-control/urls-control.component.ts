@@ -27,7 +27,7 @@ export class UrlsControlComponent implements OnInit {
   filtroBuscarUrls: FiltroUrlsRequest = new FiltroUrlsRequest();
   buscarFiltro: string = "ativos";
   urls: Array<Url> = new Array<Url>;
-  colunas = ["urlId", "urlOriginal", "ativo"];
+  colunas = ["urlId", "urlOriginal", "clicks", "ativo"];
   elementoExpandido: Url = new Url();
   aberto: boolean = false;
 

@@ -22,7 +22,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
 import { UrlsControlComponent } from './views/urls-control/urls-control.component';
-import { UserControlComponent } from './views/user-control/user-control.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './views/navbar/navbar.component';
 import { SemRegistroComponent } from './components/sem-registro/sem-registro.component';
@@ -41,7 +40,6 @@ import { CriarUrlDialogComponent } from './views/urls-control/criar-url-dialog/c
     AppComponent,
     UrlsControlComponent,
     HomeComponent,
-    UserControlComponent,
     NavbarComponent,
     SemRegistroComponent,
     LoginComponent,

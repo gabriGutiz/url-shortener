@@ -28,7 +28,6 @@
   color: #fff;
   cursor: pointer;
   display: inline-block;
-  font-family: Inter,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
   font-size: 16px;
   font-weight: 600;
   letter-spacing: normal;
@@ -61,7 +60,7 @@
 
 form {
   font-size: large;
-  font-family: 'Roboto';
+  font-family: 'Space Mono';
   width: 100%;
 }
 
@@ -83,7 +82,7 @@ mat-form-field {
   flex-direction: column;
   align-items: center;
   padding: 8px 20px;
-  font-family: 'Roboto';
+  font-family: 'Space Mono';
   border-radius: 6px;
   border: none;
   font-size: large;

@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/']);
           this.loadingService.finalizar();
         },
-        error: (err) => {
+        error: (err: any) => {
           if (err.status == 500) {
             this.snackBarService.falha("Erro interno, tente novamente mais tarde");
           } else {

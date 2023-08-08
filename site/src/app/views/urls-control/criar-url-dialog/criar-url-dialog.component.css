@@ -1,6 +1,6 @@
 
 .main {
-  font-family: 'Roboto';
+  font-family: 'Space Mono';
 }
 
 .titulo {
@@ -45,7 +45,7 @@ mat-form-field {
   flex-direction: column;
   align-items: center;
   padding: 8px 20px;
-  font-family: 'Roboto';
+  font-family: 'Space Mono';
   border-radius: 6px;
   border: none;
   font-size: large;
