@@ -24,44 +24,9 @@
           </mat-form-field>
         </div>
         <div>
-          <button class="btn" mat-raised-button matInput click="submit">
-            <span *ngIf="loadingService.loading" class="spinner-border spinner-border-sm me-1"></span>
-            Login
-          </button>
+          <button class="btn" mat-raised-button matInput click="submit">Login</button>
         </div>
       </form>
     </div>
-    <!--<div class="main">
-      <mat-card-title>Login</mat-card-title>
-      <mat-card-content>
-        <form [formGroup]="form" (ngSubmit)="submitLogin()">
-          <div class="campos">
-            <mat-form-field appearance="outline">
-              <mat-label class="form-label">Username</mat-label>
-              <input matInput
-                name="user"
-                type="text"
-                formControlName="user" required>
-            </mat-form-field>
-          </div>
-          <div class="campos">
-            <mat-form-field appearance="outline">
-              <mat-label class="form-label">Senha</mat-label>
-              <input matInput
-                name="senha"
-                [type]="mostrar ? 'text' : 'password'"
-                formControlName="senha" required>
-              <mat-icon matSuffix (click)="mostrar=!mostrar">{{mostrar ? 'visibility' : 'visibility_off'}}</mat-icon>
-            </mat-form-field>
-          </div>
-          <div>
-            <button mat-raised-button matInput [disabled]="form.invalid" class="btn-primary" click="submit">
-              <span *ngIf="loadingService.loading" class="spinner-border spinner-border-sm me-1"></span>
-              Login
-            </button>
-          </div>
-        </form>
-      </mat-card-content>
-    </div>-->
   </mat-card>
 </div>

@@ -45,7 +45,7 @@ export class UserControlService {
 
   alterarSenha(user: string, alterarUserRequest: AlterarSenhaRequest): Observable<null> {
     return this.http.put<null>(
-      `${environment.api}/${this.urlPath.api}/${user}/${this.urlPath.actions.senha}`,
+      `${environment.api}/${this.urlPath.api}/${this.urlPath.controller}/${user}/${this.urlPath.actions.senha}`,
       alterarUserRequest,
       this.httpOptions
     );
