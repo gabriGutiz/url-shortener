@@ -72,5 +72,6 @@
       <tr mat-row *matRowDef="let row; columns: colunas;"></tr>
       <tr mat-header-row *matHeaderRowDef="colunas"></tr>
     </table>
+    <mat-paginator #paginator class="mat-elevation-z4" [pageSize]="10" [length]="urls.length" showFirstLastButtons></mat-paginator>
   </div>
 </mat-card-content>

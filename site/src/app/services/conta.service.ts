@@ -2,7 +2,6 @@ import { UserControlService } from 'src/app/services/users-control/userControl.s
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable, map } from "rxjs";
 import { Router } from "@angular/router";
-import { LocalUser } from '../models/localUser.model';
 
 @Injectable()
 export class ContaService {
@@ -10,11 +9,11 @@ export class ContaService {
     private router: Router,
     private userService: UserControlService
   ) {
-    this.userSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('user')!));
+    this.userSubject = new BehaviorSubject(localStorage.getItem('user'));
     this.user = this.userSubject.asObservable();
   }
-  private userSubject: BehaviorSubject<LocalUser | null>;
-  public user: Observable<LocalUser | null>;
+  private userSubject: BehaviorSubject<string | null>;
+  public user: Observable<string | null>;
 
   public get userValue() {
     return this.userSubject.value;
@@ -23,15 +22,11 @@ export class ContaService {
   login(user: string, senha: string) {
     return this.userService.login(user, senha)
       .pipe(map(response => {
-        const varUser = {
-          user: user,
-          senha: senha
-        } as LocalUser;
 
         if (response) {
-          localStorage.setItem('user', JSON.stringify(varUser));
-          this.userSubject.next(varUser);
-          return varUser;
+          localStorage.setItem('user', user);
+          this.userSubject.next(user);
+          return user;
         }
         throw new Error();
       }));

@@ -31,7 +31,7 @@
     </div>
     <ng-template #popContentUser>
       <div class="links-div">
-        <div class="link-div" type="button" routerLink="/urls">
+        <div class="link-div" type="button" (click)="alterarUser()">
           <mat-icon class="link-icon">perm_identity</mat-icon>
           <div>Alterar usuário</div>
         </div>

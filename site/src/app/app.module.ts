@@ -17,6 +17,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,6 +35,7 @@ import { LoginComponent } from './views/login/login.component';
 import { UserControlService } from './services/users-control/userControl.service';
 import { EditarUrlDialogComponent } from './views/urls-control/editar-url-dialog/editar-url-dialog.component';
 import { CriarUrlDialogComponent } from './views/urls-control/criar-url-dialog/criar-url-dialog.component';
+import { AlterarUserDialogComponent } from './views/navbar/alterar-user-dialog/alterar-user-dialog.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ import { CriarUrlDialogComponent } from './views/urls-control/criar-url-dialog/c
     SemRegistroComponent,
     LoginComponent,
     EditarUrlDialogComponent,
-    CriarUrlDialogComponent
+    CriarUrlDialogComponent,
+    AlterarUserDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -54,6 +57,7 @@ import { CriarUrlDialogComponent } from './views/urls-control/criar-url-dialog/c
     MatSelectModule,
     MatFormFieldModule,
     MatDialogModule,
+    MatPaginatorModule,
     MatInputModule,
     MatNativeDateModule,
     FormsModule,

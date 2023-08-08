@@ -1,0 +1,51 @@
+<div class="main">
+  <p class="titulo">Alterar Usuário</p>
+  <form #form="ngForm">
+    <div class="campos">
+      <mat-form-field appearance="outline">
+        <mat-label></mat-label>
+        <input matInput name="urlId" type="text" [(ngModel)]="novoUrl.urlId">
+      </mat-form-field>
+    </div>
+    <div class="campos grande">
+      <mat-form-field class="url" appearance="outline">
+        <mat-label>Url</mat-label>
+        <input matInput
+          name="url"
+          required
+          type="text"
+          [(ngModel)]="novoUrl.url">
+      </mat-form-field>
+    </div>
+    <div class="campos peq">
+      <mat-form-field appearance="outline">
+        <mat-label>Data Expiração</mat-label>
+        <input matInput
+          name="dtExp"
+          type="date"
+          [matDatepicker]="picker"
+          [(ngModel)]="novoUrl.dataExpiracao">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="campos">
+      <mat-form-field appearance="outline">
+        <mat-label>Máximo de acessos</mat-label>
+        <input matInput
+          name="qntdAcc"
+          min="0"
+          type="number"
+          [(ngModel)]="novoUrl.acessoMaximo">
+      </mat-form-field>
+    </div>
+    <div class="btns">
+      <div>
+        <button class="btn" mat-raised-button matInput (click)="fechar()">Cancelar</button>
+      </div>
+      <div class="dir">
+        <button class="btn" mat-raised-button matInput (click)="salvar()">Criar</button>
+      </div>
+    </div>
+  </form>
+</div>
