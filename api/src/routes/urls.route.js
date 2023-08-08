@@ -40,17 +40,6 @@ router.get('/', async (req, res, next) => {
         .catch((err) => next(err));
 });
 
-router.get('/:id/status', async (req, res, next) => {
-    if (!req.params.id) {
-        throw new CustomError(400 ,'O id da url é obrigatório');
-    }
-    await new UrlService().buscarStatus(req.params.id)
-        .then((response) => {
-            return res.status(200).send(response);
-        })
-        .catch((err) => next(err));
-});
-
 router.put('/:id/ativar-desativar', async (req, res, next) => {
     await new UrlService().ativarDesativarUrl(req.params.id)
         .then(() => {

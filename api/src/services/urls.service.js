@@ -1,5 +1,5 @@
 import { CustomError } from '../utils/CustomError.js';
-import { urlCompleto, motivosUrlInativo } from '../utils/url.util.js';
+import { urlCompleto } from '../utils/url.util.js';
 import { DbUrlService } from './dbUrl.service.js';
 
 class UrlService {
@@ -27,16 +27,6 @@ class UrlService {
             return await this._criarNovaUrl(urlRequest, baseUrl);
         }
         throw new CustomError(400, `Já existe uma url registrada para o nome ${urlRequest.urlId}`);
-    }
-
-    async buscarStatus(idUrl) {
-        const url = await this._buscarUrl(idUrl);
-        const motivos = motivosUrlInativo(url);
-        return {
-            ativo: motivos.length > 0,
-            status: motivos.length === 0 ? 'ativo' : 'inativo',
-            motivos: motivos
-        };
     }
 
     async ativarDesativarUrl(idUrl) {

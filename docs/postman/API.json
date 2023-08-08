@@ -103,7 +103,7 @@
 								},
 								{
 									"key": "urlId",
-									"value": "google",
+									"value": "linkedin-gabriel",
 									"disabled": true
 								}
 							]
@@ -126,26 +126,6 @@
 								"urls",
 								"{{urlKey}}",
 								"status"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Ativar/Desativar url",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"url": {
-							"raw": "{{BaseUrl}}/api/urls/{{urlKey}}/ativar-desativar",
-							"host": [
-								"{{BaseUrl}}"
-							],
-							"path": [
-								"api",
-								"urls",
-								"{{urlKey}}",
-								"ativar-desativar"
 							]
 						}
 					},
