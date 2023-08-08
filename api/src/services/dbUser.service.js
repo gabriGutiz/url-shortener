@@ -34,7 +34,7 @@ class DbUserService {
         throw new CustomError(400, `Usuário ${request.user} já existente`);
     }
 
-    async alterarSenha(user, alterarReq) {
+    async alterarUser(user, alterarReq) {
         const alterar = {};
         if (alterarReq?.user) alterar.user = alterarReq.user;
         if (alterarReq?.senha) alterar.senha = alterarReq.senha;

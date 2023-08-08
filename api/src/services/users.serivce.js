@@ -15,11 +15,18 @@ class UsersService {
         await this._dbService.criarUsuario(request);
     }
 
-    async alterarSenha(user, alterarReq) {
+    async alterarUser(user, alterarReq) {
         const users = await this._dbService.buscarUsers({ user: user });
         if (users?.length === 0) throw new CustomError(400, "Usuário não encontrado");
 
-        await this._dbService.alterarSenha(user, alterarReq);
+        await this._dbService.alterarUser(user, alterarReq);
+    }
+
+    async alterarSenha(user, alterarSenhaReq) {
+        const users = await this._dbService.buscarUsers({ user: user, senha: alterarSenhaReq.senhaAtual });
+        if (users?.length === 0) throw new CustomError(400, "Usuário não encontrado ou senha inválida");
+
+        await this._dbService.alterarUser(user, { senha: alterarSenhaReq.senhaNova });
     }
     
     async login(user) {

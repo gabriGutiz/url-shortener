@@ -3,6 +3,7 @@ import { UsersService } from '../services/users.serivce.js';
 import { validateBuscarUsersReq } from '../models/schemas/users/buscarUsers.schema.js';
 import { validateCriarUserReq } from '../models/schemas/users/criarUser.schema.js';
 import { validateAlterarUserReq } from '../models/schemas/users/alterarUser.schema.js';
+import { validateAlterarSenhaReq } from '../models/schemas/users/alterarSenha.schema.js';
 import { validateLoginReq } from '../models/schemas/users/login.schema.js';
 import { auth } from "./authorization.js";
 
@@ -39,6 +40,22 @@ router.post('', async (req, res, next) => {
 
 router.put('/:user', async (req, res, next) => {
     const { error, value } = validateAlterarUserReq(req.body);
+    if (error) {
+        return res.status(400).send(error.details);
+    }
+    if (!req.params?.user) {
+        return res.status(400).send("Deve ser fornecido um usuário");
+    }
+
+    await new UsersService().alterarUser(req.params.user, value)
+        .then(() => {
+            return res.status(200).send();
+        })
+        .catch((err) => next(err));
+});
+
+router.put('/:user/senha', async (req, res, next) => {
+    const { error, value } = validateAlterarSenhaReq(req.body);
     if (error) {
         return res.status(400).send(error.details);
     }

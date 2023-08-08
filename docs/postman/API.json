@@ -56,7 +56,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"url\": \"{{url}}\",\n    \"urlId\": \"{{urlKey}}\",\n    //\"dataExpiracao\": \"2023-07-31T18:00:00.000Z\",\n    \"acessoMaximo\": 15\n}",
+							"raw": "{\n    \"url\": \"{{url}}\",\n    // \"urlId\": \"{{urlKey}}\",\n    //\"dataExpiracao\": \"2023-07-31T18:00:00.000Z\",\n    \"acessoMaximo\": 15\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -255,6 +255,35 @@
 					"response": []
 				},
 				{
+					"name": "Alterar senha",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"senhaAtual\": \"{{senha}}\",\n    \"senhaNova\": \"Teste@123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/api/users/{{user}}/senha",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user}}",
+								"senha"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Login",
 					"request": {
 						"method": "POST",
@@ -328,7 +357,7 @@
 		},
 		{
 			"key": "url",
-			"value": "https://google.com",
+			"value": "https://youtube.com",
 			"type": "default"
 		},
 		{
