@@ -11,7 +11,7 @@
 }
 
 .titulo {
-  font-size: xx-large;
+  font-size: x-large;
 }
 
 .spacer {
@@ -60,7 +60,6 @@
 
 form {
   font-size: large;
-  font-family: 'Space Mono';
   width: 100%;
 }
 
@@ -82,7 +81,6 @@ mat-form-field {
   flex-direction: column;
   align-items: center;
   padding: 8px 20px;
-  font-family: 'Space Mono';
   border-radius: 6px;
   border: none;
   font-size: large;

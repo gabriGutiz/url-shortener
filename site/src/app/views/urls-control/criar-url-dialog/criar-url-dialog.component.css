@@ -1,10 +1,6 @@
 
-.main {
-  font-family: 'Space Mono';
-}
-
 .titulo {
-  font-size: xx-large;
+  font-size: x-large;
   margin-top: 5%;
   margin-left: 5%;
 }
@@ -45,7 +41,6 @@ mat-form-field {
   flex-direction: column;
   align-items: center;
   padding: 8px 20px;
-  font-family: 'Space Mono';
   border-radius: 6px;
   border: none;
   font-size: large;

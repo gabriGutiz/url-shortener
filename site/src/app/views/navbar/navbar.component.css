@@ -28,7 +28,6 @@ mat-toolbar {
 
 .link-div {
   text-decoration: none;
-  font-family: 'Space Mono';
   color: #504d4d;
   display: flex;
   align-items: center;
@@ -46,7 +45,6 @@ mat-toolbar {
 }
 
 .list-item {
-  font-family: 'Space Mono';
   color: #9d9d9d;
   font-size: larger;
   display: flex;
@@ -81,7 +79,6 @@ a.link {
 }
 
 .brand {
-  font-family: 'Space Mono';
   font-size: 30px;
   color: #9d9d9d;
   text-decoration: none;

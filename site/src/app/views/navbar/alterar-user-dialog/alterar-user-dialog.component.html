@@ -1,42 +1,43 @@
 <div class="main">
-  <p class="titulo">Alterar Usuário</p>
-  <form #form="ngForm">
+  <mat-card-title>Alterar Usuário</mat-card-title>
+  <form #form="ngForm" [formGroup]="controleForm" (submit)="salvar()">
     <div class="campos">
       <mat-form-field appearance="outline">
-        <mat-label></mat-label>
-        <input matInput name="urlId" type="text" [(ngModel)]="novoUrl.urlId">
-      </mat-form-field>
-    </div>
-    <div class="campos grande">
-      <mat-form-field class="url" appearance="outline">
-        <mat-label>Url</mat-label>
-        <input matInput
-          name="url"
-          required
-          type="text"
-          [(ngModel)]="novoUrl.url">
-      </mat-form-field>
-    </div>
-    <div class="campos peq">
-      <mat-form-field appearance="outline">
-        <mat-label>Data Expiração</mat-label>
-        <input matInput
-          name="dtExp"
-          type="date"
-          [matDatepicker]="picker"
-          [(ngModel)]="novoUrl.dataExpiracao">
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+        <mat-label>Usuário</mat-label>
+        <input matInput name="user" type="text" [defaultValue]="user" readonly disabled>
       </mat-form-field>
     </div>
     <div class="campos">
       <mat-form-field appearance="outline">
-        <mat-label>Máximo de acessos</mat-label>
+        <mat-label>Senha Atual</mat-label>
         <input matInput
-          name="qntdAcc"
-          min="0"
-          type="number"
-          [(ngModel)]="novoUrl.acessoMaximo">
+          name="senha"
+          [type]="mostrarSenha[0] ? 'text' : 'password'"
+          formControlName="senhaAtual"
+          required>
+        <mat-icon matSuffix (click)="alterarMostrarSenha(0)">{{mostrarSenha[0] ? 'visibility' : 'visibility_off'}}</mat-icon>
+      </mat-form-field>
+    </div>
+    <div class="campos">
+      <mat-form-field appearance="outline">
+        <mat-label>Nova Senha</mat-label>
+        <input matInput
+          name="senhaNova"
+          formControlName="novaSenha"
+          [type]="mostrarSenha[1] ? 'text' : 'password'"
+          required>
+        <mat-icon matSuffix (click)="alterarMostrarSenha(1)">{{mostrarSenha[1] ? 'visibility' : 'visibility_off'}}</mat-icon>
+      </mat-form-field>
+    </div>
+    <div class="campos">
+      <mat-form-field appearance="outline">
+        <mat-label>Confirmar Nova Senha</mat-label>
+        <input matInput
+          name="confSenha"
+          formControlName="confirmaSenha"
+          [type]="mostrarSenha[2] ? 'text' : 'password'"
+          required>
+        <mat-icon matSuffix (click)="alterarMostrarSenha(2)">{{mostrarSenha[2] ? 'visibility' : 'visibility_off'}}</mat-icon>
       </mat-form-field>
     </div>
     <div class="btns">
@@ -44,7 +45,7 @@
         <button class="btn" mat-raised-button matInput (click)="fechar()">Cancelar</button>
       </div>
       <div class="dir">
-        <button class="btn" mat-raised-button matInput (click)="salvar()">Criar</button>
+        <button class="btn" mat-raised-button matInput click="submit" [disabled]="controleForm.invalid">Alterar</button>
       </div>
     </div>
   </form>

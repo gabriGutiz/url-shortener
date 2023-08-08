@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { AlterarUserRequest } from "src/app/models/userControl/alterarUser.model";
+import { AlterarSenhaRequest } from "src/app/models/userControl/alterarSenha.model";
 import { CriarUserRequest } from "src/app/models/userControl/criarUserRequest.model";
 import { FiltroUsersRequest } from "src/app/models/userControl/filtroUsersRequest.model";
 import { User } from "src/app/models/userControl/user.model";
@@ -21,7 +21,8 @@ export class UserControlService {
     api: 'api',
     controller: 'users',
       actions: {
-      login: 'login'
+      login: 'login',
+      senha: 'senha'
     }
   };
 
@@ -42,9 +43,9 @@ export class UserControlService {
     );
   }
 
-  alterarUser(user: string, alterarUserRequest: AlterarUserRequest): Observable<null> {
+  alterarSenha(user: string, alterarUserRequest: AlterarSenhaRequest): Observable<null> {
     return this.http.put<null>(
-      `${environment.api}/${this.urlPath.api}/${user}`,
+      `${environment.api}/${this.urlPath.api}/${user}/${this.urlPath.actions.senha}`,
       alterarUserRequest,
       this.httpOptions
     );

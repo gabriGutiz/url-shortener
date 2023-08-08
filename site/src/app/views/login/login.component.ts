@@ -1,7 +1,7 @@
 import { LoadingService } from 'src/app/services/loading.service';
 import { SnackBarService } from '../../services/snackBar.service';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ContaService } from 'src/app/services/conta.service';
 import { first } from 'rxjs';
@@ -11,34 +11,31 @@ import { first } from 'rxjs';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   constructor(
     private contaService: ContaService,
     private router: Router,
-    private formBuilder: FormBuilder,
     private snackBarService: SnackBarService,
     public loadingService: LoadingService
   ) { }
 
-  form!: FormGroup;
-  submitted: boolean = false;
-
-  ngOnInit() {
-    this.form = this.formBuilder.group({
-      user: ['', Validators.required],
-      senha: ['', Validators.required]
-    });
-  }
-
-  get f() { return this.form.controls; }
+  form = new FormGroup({
+    user: new FormControl<string>('', Validators.required),
+    senha: new FormControl<string>('', Validators.required)
+  });
+  mostrar: boolean = false;
 
   submitLogin() {
     if (this.form.invalid) {
       this.snackBarService.falha('Inputs inválidos');
       return;
     }
+    
+    const user = this.form.get('user')?.value ?? "";
+    const senha = this.form.get('senha')?.value ?? "";
+
     this.loadingService.iniciar();
-    this.contaService.login(this.f['user'].value, this.f['senha'].value)
+    this.contaService.login(user, senha)
       .pipe(first())
       .subscribe({
         next: () => {
