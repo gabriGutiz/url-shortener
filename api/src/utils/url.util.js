@@ -1,6 +1,6 @@
 
 function urlCompleto(baseUrl, key) {
-    return `${baseUrl}/${key}`;
+    return `${baseUrl}/api/${key}`;
 }
 
 function urlEstaAtivo(url) {

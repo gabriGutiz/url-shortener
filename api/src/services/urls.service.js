@@ -1,6 +1,7 @@
 import { CustomError } from '../utils/CustomError.js';
 import { urlCompleto } from '../utils/url.util.js';
 import { DbUrlService } from './dbUrl.service.js';
+import { nanoid } from 'nanoid';
 
 class UrlService {
     constructor() {
@@ -13,12 +14,15 @@ class UrlService {
     }
 
     async criarUrl(urlRequest, baseUrl) {
-        if (!urlRequest.urlId) {
-            const urlsPorOriginal = await this._dbService.buscarRegistroPorUrl(urlRequest.url);
+        if (!urlRequest.urlId || urlRequest.urlId === "") {
+            const urlsPorOriginal = await this._dbService.buscarUrls({ urlId: urlRequest.url });
 
             if (urlsPorOriginal?.length === 0 || !urlsPorOriginal[0]?.urlOriginal) {
-                // TODO: implementar lógica para criar url encurtada
-                return await this._criarNovaUrl(urlRequest, baseUrl);
+                await this._gerarId()
+                    .then(async (id) => {
+                        urlRequest.urlId = id;
+                        return await this._criarNovaUrl(urlRequest, baseUrl);
+                    });
             }
             return urlCompleto(baseUrl, urlsPorOriginal[0]?.urlId);
         }
@@ -63,6 +67,19 @@ class UrlService {
             return urlCompleto(baseUrl, novoUrl.urlId);
         }
         throw new CustomError(500, "Erro ao criar url");
+    }
+
+    async _gerarId(tentativas=0) {
+        if (tentativas >= 5) {
+            throw new CustomError(500, 'Erro ao gerar URL encurtada')
+        }
+        const id = nanoid(8 + tentativas*2)
+        const urlPorId = await this._dbService.buscarRegistroPorUrlId(id);
+
+        if (urlPorId === undefined || urlPorId === null) {
+            return id;
+        }
+        return this._gerarId(tentativas+1);
     }
 }
 
