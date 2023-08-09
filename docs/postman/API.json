@@ -82,7 +82,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BaseUrl}}/api/urls",
+							"raw": "{{BaseUrl}}/api/urls?urlId=gabriel",
 							"host": [
 								"{{BaseUrl}}"
 							],
@@ -103,29 +103,8 @@
 								},
 								{
 									"key": "urlId",
-									"value": "linkedin-gabriel",
-									"disabled": true
+									"value": "gabriel"
 								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get status url",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{BaseUrl}}/api/urls/{{urlKey}}/status",
-							"host": [
-								"{{BaseUrl}}"
-							],
-							"path": [
-								"api",
-								"urls",
-								"{{urlKey}}",
-								"status"
 							]
 						}
 					},
@@ -319,7 +298,7 @@
 		"basic": [
 			{
 				"key": "password",
-				"value": "Gabri1008@",
+				"value": "Teste@123",
 				"type": "string"
 			},
 			{
