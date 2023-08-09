@@ -16,10 +16,10 @@ class UrlService {
             let qr = "";
             QRCode.toString(urlCompleto(baseUrl, item.urlId), {errorCorrectionLevel: 'L', type: 'svg'},
                 (err, data) => {
-                    if (!err) {
-                        throw new CustomError(500, 'Erro ao gerar QR code')
+                    if (err) {
+                        throw new CustomError(500, 'Erro ao gerar QR code');
                     }
-                    qr = data
+                    qr = btoa(data);
                 });
             return {
                 urlId: item.urlId,

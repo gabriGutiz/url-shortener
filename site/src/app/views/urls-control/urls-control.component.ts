@@ -90,6 +90,16 @@ export class UrlsControlComponent implements OnInit {
       );
   }
 
+  downloadImage(data: string, urlId: string) {
+    const src = `data:image/svg+xml;base64,${data}`;
+    const link = document.createElement("a");
+    link.href = src;
+    link.download = `qrcode-${urlId}.png`;
+    link.click();
+
+    link.remove();
+  }
+
   _existemUrls() {
     return this.urls?.length > 0;
   }

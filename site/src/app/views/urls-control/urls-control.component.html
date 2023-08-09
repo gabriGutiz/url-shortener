@@ -39,14 +39,15 @@
       <ng-container matColumnDef="urlId">
         <th mat-header-cell *matHeaderCellDef>URL encurtada</th>
         <td mat-cell *matCellDef="let item">
-          <span class="clickable" (click)="abrirModalEditar(item)">/{{item.urlId}}</span>
-          <button mat-fab type="button" class="btn-qr" [ngbPopover]="img">
-            <mat-icon class="icon-qr">search</mat-icon>
-          </button>
+          <div class="urlid">
+            <div class="clickable span-url" (click)="abrirModalEditar(item)">/{{item.urlId}}</div>
+            <button mat-fab type="button" class="btn-qr" [ngbPopover]="img" placement="right">
+              <mat-icon class="icon-qr">find_in_page</mat-icon>
+            </button>
+          </div>
           <ng-template #img>
-            <svg [innerHTML]="item.qrcode"></svg>
-            <div>{{item.qrcode}}</div>
-            <img [src]="'data:image/png;base64,' + item.qrcode"/>
+            <img class="img-qr" [src]="'data:image/svg+xml;base64,' + item.qrcode" (click)="downloadImage(item.qrcode, item.urlId)"/>
+            <span>Clique na imagem para baixar!</span>
           </ng-template>
         </td>
       </ng-container>
