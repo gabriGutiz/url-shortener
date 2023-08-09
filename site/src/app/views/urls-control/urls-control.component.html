@@ -34,7 +34,7 @@
   <div *ngIf="_existemUrls()">
     <table mat-table
       class="mat-elevation-z4"
-      [dataSource]="urls"
+      [dataSource]="dataUrls"
       multiTemplateDataRows>
       <ng-container matColumnDef="urlId">
         <th mat-header-cell *matHeaderCellDef>URL encurtada</th>
@@ -80,6 +80,6 @@
       <tr mat-row *matRowDef="let row; columns: colunas;"></tr>
       <tr mat-header-row *matHeaderRowDef="colunas"></tr>
     </table>
-    <mat-paginator #paginator class="mat-elevation-z4" [pageSize]="10" [length]="urls.length" showFirstLastButtons></mat-paginator>
+    <mat-paginator #paginator class="mat-elevation-z4" [pageIndex]="0" [pageSize]="10" [length]="dataUrls.data.length" showFirstLastButtons></mat-paginator>
   </div>
 </mat-card-content>

@@ -10,30 +10,14 @@ class UrlService {
     }
 
     async buscarUrls(filtros, baseUrl) {
-        const urls = await this._dbService.buscarUrls(filtros);
+        let urls;
+        if (filtros.ativo) {
+            urls = await this._dbService.buscarUrls({ ativo: filtros.ativo });
+        } else {
+            urls = await this._dbService.buscarTodasUrls();
+        }
 
-        return urls.map(function(item) {
-            let qr = "";
-            QRCode.toString(urlCompleto(baseUrl, item.urlId), {errorCorrectionLevel: 'L', type: 'svg'},
-                (err, data) => {
-                    if (err) {
-                        throw new CustomError(500, 'Erro ao gerar QR code');
-                    }
-                    qr = btoa(data);
-                });
-            return {
-                urlId: item.urlId,
-                urlOriginal: item.urlOriginal,
-                descricao: item.descricao,
-                acessoMaximo: item.acessoMaximo,
-                clicks: item.clicks,
-                dataExpiracao: item.dataExpiracao,
-                dataCriacao: item.dataCriacao,
-                ativo: item.ativo,
-                motivoInativo: item.motivoInativo,
-                qrcode: qr
-            };
-        });
+        return await this._alterarUrls(urls, filtros, baseUrl);
     }
 
     async criarUrl(urlRequest, baseUrl) {
@@ -73,6 +57,45 @@ class UrlService {
             acessoMaximo: alterarUrlReq.acessoMaximo
         };
         await this._dbService.alterarRegistro(alterar);
+    }
+
+    async _alterarUrls(arr, filtros, baseUrl) {
+        arr = arr.filter(function(item) {
+            if (filtros.urlId) {
+                if (!item.urlId.includes(filtros.urlId)) {
+                    return false;
+                }
+            }
+            if (filtros.url) {
+                if (!item.urlOriginal.includes(filtros.url)) {
+                    return false;
+                }
+            }
+            return true;
+        });
+
+        return arr.map(function(item) {
+            let qr = "";
+            QRCode.toString(urlCompleto(baseUrl, item.urlId), {errorCorrectionLevel: 'L', type: 'svg'},
+                (err, data) => {
+                    if (err) {
+                        throw new CustomError(500, 'Erro ao gerar QR code');
+                    }
+                    qr = btoa(data);
+                });
+            return {
+                urlId: item.urlId,
+                urlOriginal: item.urlOriginal,
+                descricao: item.descricao,
+                acessoMaximo: item.acessoMaximo,
+                clicks: item.clicks,
+                dataExpiracao: item.dataExpiracao,
+                dataCriacao: item.dataCriacao,
+                ativo: item.ativo,
+                motivoInativo: item.motivoInativo,
+                qrcode: qr
+            };
+        });
     }
 
     async _buscarUrl(idUrl) {

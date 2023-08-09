@@ -9,7 +9,7 @@ class DbUrlService {
     }
 
     async buscarTodasUrls() {
-        return await this.buscarUrls(null);
+        return await this.buscarUrls({});
     }
     
     async buscarRegistroPorUrlId(urlId) {
