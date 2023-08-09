@@ -2,15 +2,38 @@ import { CustomError } from '../utils/CustomError.js';
 import { urlCompleto } from '../utils/url.util.js';
 import { DbUrlService } from './dbUrl.service.js';
 import { nanoid } from 'nanoid';
+import QRCode from 'qrcode';
 
 class UrlService {
     constructor() {
         this._dbService = new DbUrlService();
     }
 
-    async buscarUrls(filtros) {
+    async buscarUrls(filtros, baseUrl) {
         const urls = await this._dbService.buscarUrls(filtros);
-        return urls;
+
+        return urls.map(function(item) {
+            let qr = "";
+            QRCode.toString(urlCompleto(baseUrl, item.urlId), {errorCorrectionLevel: 'L', type: 'svg'},
+                (err, data) => {
+                    if (!err) {
+                        throw new CustomError(500, 'Erro ao gerar QR code')
+                    }
+                    qr = data
+                });
+            return {
+                urlId: item.urlId,
+                urlOriginal: item.urlOriginal,
+                descricao: item.descricao,
+                acessoMaximo: item.acessoMaximo,
+                clicks: item.clicks,
+                dataExpiracao: item.dataExpiracao,
+                dataCriacao: item.dataCriacao,
+                ativo: item.ativo,
+                motivoInativo: item.motivoInativo,
+                qrcode: qr
+            };
+        });
     }
 
     async criarUrl(urlRequest, baseUrl) {

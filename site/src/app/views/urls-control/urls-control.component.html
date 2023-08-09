@@ -24,7 +24,7 @@
       </mat-select>
     </mat-form-field>
     <button mat-fab type="button" class="busca" (click)="buscarUrls()">
-      <mat-icon class="icon-busca">search</mat-icon>
+      <mat-icon class="icon-busca peq">search</mat-icon>
     </button>
     <button mat-fab type="button" class="busca" (click)="abrirModalCriar()">
       <mat-icon class="icon-busca">add</mat-icon>
@@ -38,10 +38,17 @@
       multiTemplateDataRows>
       <ng-container matColumnDef="urlId">
         <th mat-header-cell *matHeaderCellDef>URL encurtada</th>
-        <td mat-cell
-          class="clickable"
-          *matCellDef="let item"
-          (click)="abrirModalEditar(item)"> /{{item.urlId}} </td>
+        <td mat-cell *matCellDef="let item">
+          <span class="clickable" (click)="abrirModalEditar(item)">/{{item.urlId}}</span>
+          <button mat-fab type="button" class="btn-qr" [ngbPopover]="img">
+            <mat-icon class="icon-qr">search</mat-icon>
+          </button>
+          <ng-template #img>
+            <svg [innerHTML]="item.qrcode"></svg>
+            <div>{{item.qrcode}}</div>
+            <img [src]="'data:image/png;base64,' + item.qrcode"/>
+          </ng-template>
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="urlOriginal">

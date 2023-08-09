@@ -17,6 +17,9 @@ mat-card {
   position: absolute;
   opacity: 0.6;
   padding-bottom: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .flex-container {

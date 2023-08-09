@@ -27,7 +27,7 @@ router.get('/', async (req, res, next) => {
         return res.status(400).send(error.details);
     }
 
-    await new UrlService().buscarUrls(value)
+    await new UrlService().buscarUrls(value, `${req.protocol}://${req.get('host')}`)
         .then((urls) => {
             if (!urls || urls?.length === 0) {
                 return res.status(204).send();

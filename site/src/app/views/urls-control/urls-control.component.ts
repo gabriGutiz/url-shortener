@@ -90,10 +90,6 @@ export class UrlsControlComponent implements OnInit {
       );
   }
 
-  abrirUrl(url: Url) {
-    console.log(url)
-  }
-
   _existemUrls() {
     return this.urls?.length > 0;
   }

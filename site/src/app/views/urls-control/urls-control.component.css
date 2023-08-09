@@ -54,6 +54,24 @@ table {
   margin-right: 15px;
 }
 
+.btn-qr {
+  height: 20px;
+  width: 20px;
+  border: none;
+  justify-self: center;
+  background-color: #222;
+  color: white;
+  align-items: center;
+  margin-top: 8px;
+  margin-right: 15px;
+  font-size: 10px;
+  justify-content: center;
+}
+
+.icon-qr {
+  font-size: large;
+}
+
 .icon-busca {
   margin-left: 1px;
 }
@@ -64,7 +82,7 @@ table {
 
 .status {
   justify-content: center;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .dot {

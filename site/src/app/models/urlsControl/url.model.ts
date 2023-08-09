@@ -9,4 +9,5 @@ export class Url {
   dataCriacao?: Date;
   ativo?: boolean;
   motivoInativo?: string;
+  qrcode?: string;
 }
