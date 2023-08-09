@@ -44,9 +44,7 @@
             <mat-icon class="icon-qr">search</mat-icon>
           </button>
           <ng-template #img>
-            <svg [innerHTML]="item.qrcode"></svg>
-            <div>{{item.qrcode}}</div>
-            <img [src]="'data:image/png;base64,' + item.qrcode"/>
+            <img [src]="item.qrcode"/>
           </ng-template>
         </td>
       </ng-container>

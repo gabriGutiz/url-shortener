@@ -12,15 +12,7 @@ class UrlService {
     async buscarUrls(filtros, baseUrl) {
         const urls = await this._dbService.buscarUrls(filtros);
 
-        return urls.map(function(item) {
-            let qr = "";
-            QRCode.toString(urlCompleto(baseUrl, item.urlId), {errorCorrectionLevel: 'L', type: 'svg'},
-                (err, data) => {
-                    if (!err) {
-                        throw new CustomError(500, 'Erro ao gerar QR code')
-                    }
-                    qr = data
-                });
+        const novoUrls = urls.map(async function(item) {
             return {
                 urlId: item.urlId,
                 urlOriginal: item.urlOriginal,
@@ -31,9 +23,10 @@ class UrlService {
                 dataCriacao: item.dataCriacao,
                 ativo: item.ativo,
                 motivoInativo: item.motivoInativo,
-                qrcode: qr
+                qrcode: await this._gerarQrcode(urlCompleto(baseUrl, item.urlId))
             };
         });
+        return novoUrls;
     }
 
     async criarUrl(urlRequest, baseUrl) {
@@ -73,6 +66,14 @@ class UrlService {
             acessoMaximo: alterarUrlReq.acessoMaximo
         };
         await this._dbService.alterarRegistro(alterar);
+    }
+
+    async _gerarQrcode(text) {
+        const qr = await QRCode.toDataURL(text, {errorCorrectionLevel: 'L'})
+            .then((code) => {
+                return code;
+            }, (err) => {});
+        return qr;
     }
 
     async _buscarUrl(idUrl) {
