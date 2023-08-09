@@ -9,7 +9,6 @@ const mongoConnection = async () => {
         })
         .catch((err) => {
             console.error(`ERRO AO CONECTAR COM DB: ${err.message}`);
-            throw new CustomError();
         });
 }
 

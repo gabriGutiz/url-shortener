@@ -8,8 +8,7 @@ async function auth(req, res, next) {
     const credenciaisBase64 = req.headers.authorization.split(' ')[1];
     const [user, senha] = Buffer.from(credenciaisBase64, 'base64').toString('ascii').split(':');
     
-    const dbService = new DbUserService();
-    await dbService.validarLogin({ user: user, senha: senha })
+    await new DbUserService().validarLogin({ user: user, senha: senha })
         .then((loginValido) => {
             if (!loginValido) {
                 return res.status(401).send('Credenciais de autorização inválidas');
