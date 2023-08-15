@@ -8,7 +8,7 @@ sudo apt-get update && \
 	sudo apt-get install docker.io -y
 
 echo "clonando git"
-git clone https://$1:$2@github.com//gabriGutiz/layers-case.git
+git clone https://$1:$2@github.com//gabriGutiz/url-shortener.git
 
 mv layers-case/api .
 mv layers-case/site .
