@@ -1,7 +1,7 @@
 
 export const environment = {
   production: true,
-  api: 'http://chinelli.com.br',
-  user: 'site_user',
-  senha: 'f0!ruZ6o86l'
+  api: 'YOUR_API_URL',
+  user: 'YOUR_USER',
+  senha: 'YOUR_PASSW'
 };
