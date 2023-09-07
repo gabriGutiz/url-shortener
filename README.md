@@ -1,3 +1,3 @@
-# Desafio processo seletivo da Layers - Encurtador de url
+# URL Shortener
 
-Desafio proposto no processo seletivo para estagiários da Layers.
+URL Shortener with a admin site
