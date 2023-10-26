@@ -8,7 +8,7 @@ import { validateLoginReq } from '../models/schemas/users/login.schema.js';
 import { auth } from "./authorization.js";
 
 const router = express.Router();
-router.use(auth);
+router.use(auth); // Comment this line to create your user locally
 router.get('/', async (req, res, next) => {
     const { error, value } = validateBuscarUsersReq(req.query);
     if (error) {
