@@ -226,7 +226,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [in/gchinelli](https://www.linkedin.com/in/gchinelli/) - gabri.gutiz@outlook.com
+Gabriel Gutierrez - [in/gchinelli](https://www.linkedin.com/in/gchinelli/) - gabri.gutiz@outlook.com
 
 Project Link: [https://github.com/gabriGutiz/url-shortener](https://github.com/gabriGutiz/url-shortener)
 
